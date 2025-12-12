@@ -15,16 +15,15 @@ const BackgroundAnimation: React.FC = () => {
     let sparkles: any[] = [];
     const mouse = { x: -1000, y: -1000 };
     
-    // Using a professional palette that aligns with the portfolio's blue/slate theme
-    // Slightly saturated colors to pop in both light and dark modes
+    // Electric Neon Palettes
     const colorSchemes = [
-      ['#2563eb', '#3b82f6', '#60a5fa', '#1d4ed8', '#1e40af'], // Blues
-      ['#4f46e5', '#6366f1', '#818cf8', '#4338ca', '#3730a3'], // Indigos
-      ['#0891b2', '#06b6d4', '#22d3ee', '#0e7490', '#155e75'], // Cyans
+      ['#00f2ff', '#00d4ff', '#0077ff', '#33ffff', '#0062ff'], // Neon Cyans/Blues
+      ['#bc00ff', '#8a2be2', '#bf00ff', '#ff00ff', '#4b0082'], // Neon Purples/Magentas
+      ['#00ff9f', '#00ffcc', '#00ffa3', '#33ffaa', '#00ff88'], // Neon Greens/Mints
     ];
     let currentColorScheme = 0;
-    const speedMultiplier = 0.8;
-    const connectionDistance = 140;
+    const speedMultiplier = 0.6;
+    const connectionDistance = 160;
 
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
@@ -39,20 +38,19 @@ const BackgroundAnimation: React.FC = () => {
 
     const createParticles = () => {
       particles = [];
-      const particleCount = Math.min(100, Math.floor((canvas.width * canvas.height) / 15000));
+      const particleCount = Math.min(80, Math.floor((canvas.width * canvas.height) / 20000));
       
       for (let i = 0; i < particleCount; i++) {
-        const vx = (Math.random() - 0.5) * 1.0;
-        const vy = (Math.random() - 0.5) * 1.0;
+        const vx = (Math.random() - 0.5) * 1.2;
+        const vy = (Math.random() - 0.5) * 1.2;
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
           vx: vx,
           vy: vy,
-          size: Math.random() * 3.0 + 1.2,
+          size: Math.random() * 2.5 + 1.5,
           color: getRandomColor(),
-          // Slightly higher minimum opacity for visibility on light backgrounds
-          opacity: Math.random() * 0.4 + 0.35, 
+          opacity: Math.random() * 0.5 + 0.4, 
           originalVx: vx,
           originalVy: vy,
           pulse: Math.random() * Math.PI * 2
@@ -61,13 +59,13 @@ const BackgroundAnimation: React.FC = () => {
     };
 
     const createSparkle = () => {
-      if (sparkles.length < 20) {
+      if (sparkles.length < 15) {
         sparkles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
           size: Math.random() * 2.0 + 0.5,
           opacity: 1,
-          decay: Math.random() * 0.008 + 0.004
+          decay: Math.random() * 0.005 + 0.003
         });
       }
     };
@@ -77,16 +75,16 @@ const BackgroundAnimation: React.FC = () => {
         const dx = mouse.x - p.x;
         const dy = mouse.y - p.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
-        const maxDistance = 200;
+        const maxDistance = 250;
 
         if (distance < maxDistance) {
           const force = (maxDistance - distance) / maxDistance;
           const angle = Math.atan2(dy, dx);
-          p.vx -= Math.cos(angle) * force * 0.25;
-          p.vy -= Math.sin(angle) * force * 0.25;
+          p.vx -= Math.cos(angle) * force * 0.4;
+          p.vy -= Math.sin(angle) * force * 0.4;
         } else {
-          p.vx += (p.originalVx - p.vx) * 0.02;
-          p.vy += (p.originalVy - p.vy) * 0.02;
+          p.vx += (p.originalVx - p.vx) * 0.03;
+          p.vy += (p.originalVy - p.vy) * 0.03;
         }
 
         p.x += p.vx * speedMultiplier;
@@ -97,8 +95,8 @@ const BackgroundAnimation: React.FC = () => {
         if (p.y < 0) p.y = canvas.height;
         if (p.y > canvas.height) p.y = 0;
 
-        p.pulse += 0.02;
-        p.currentSize = p.size + Math.sin(p.pulse) * 0.6;
+        p.pulse += 0.04;
+        p.currentSize = p.size + Math.sin(p.pulse) * 0.8;
       });
     };
 
@@ -112,6 +110,7 @@ const BackgroundAnimation: React.FC = () => {
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
+      // Draw Connections with Neon Glow
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const p1 = particles[i];
@@ -121,11 +120,13 @@ const BackgroundAnimation: React.FC = () => {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < connectionDistance) {
-            const opacity = (connectionDistance - dist) / connectionDistance * 0.35;
+            const opacity = (connectionDistance - dist) / connectionDistance * 0.4;
             ctx.save();
             ctx.globalAlpha = opacity;
             ctx.strokeStyle = p1.color;
-            ctx.lineWidth = 1.2;
+            ctx.lineWidth = 1.5;
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = p1.color;
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
@@ -135,14 +136,23 @@ const BackgroundAnimation: React.FC = () => {
         }
       }
 
+      // Draw Particles with Intense Neon Bloom
       particles.forEach(p => {
         ctx.save();
         ctx.globalAlpha = p.opacity;
         ctx.fillStyle = p.color;
-        ctx.shadowBlur = 15;
+        // The core particle
+        ctx.shadowBlur = 30;
         ctx.shadowColor = p.color;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.currentSize || p.size, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Secondary Bloom layer
+        ctx.globalAlpha = p.opacity * 0.3;
+        ctx.shadowBlur = 50;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, (p.currentSize || p.size) * 1.5, 0, Math.PI * 2);
         ctx.fill();
         ctx.restore();
       });
@@ -151,7 +161,7 @@ const BackgroundAnimation: React.FC = () => {
         ctx.save();
         ctx.globalAlpha = s.opacity;
         ctx.fillStyle = '#ffffff';
-        ctx.shadowBlur = 12;
+        ctx.shadowBlur = 15;
         ctx.shadowColor = '#ffffff';
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
@@ -160,13 +170,16 @@ const BackgroundAnimation: React.FC = () => {
       });
 
       if (mouse.x !== -1000) {
-        const gradient = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 180);
-        gradient.addColorStop(0, 'rgba(59, 130, 246, 0.15)');
-        gradient.addColorStop(1, 'rgba(59, 130, 246, 0)');
+        ctx.save();
+        const gradient = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 220);
+        gradient.addColorStop(0, 'rgba(0, 242, 255, 0.2)');
+        gradient.addColorStop(0.5, 'rgba(0, 212, 255, 0.05)');
+        gradient.addColorStop(1, 'rgba(0, 212, 255, 0)');
         ctx.fillStyle = gradient;
         ctx.beginPath();
-        ctx.arc(mouse.x, mouse.y, 180, 0, Math.PI * 2);
+        ctx.arc(mouse.x, mouse.y, 220, 0, Math.PI * 2);
         ctx.fill();
+        ctx.restore();
       }
 
       updateParticles();
@@ -184,7 +197,7 @@ const BackgroundAnimation: React.FC = () => {
       mouse.y = -1000;
     };
 
-    const sparkleInterval = setInterval(createSparkle, 600);
+    const sparkleInterval = setInterval(createSparkle, 1000);
 
     window.addEventListener('resize', resizeCanvas);
     window.addEventListener('mousemove', handleMouseMove);

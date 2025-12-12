@@ -12,11 +12,11 @@ import BackgroundAnimation from './components/BackgroundAnimation';
 
 function App() {
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 transition-colors duration-300 relative">
+    <div className="min-h-screen bg-brand-light dark:bg-midnight transition-colors duration-500 relative">
       {/* High-fidelity interactive galaxy background */}
       <BackgroundAnimation />
       
-      {/* Global Subtle Grid Pattern - Lowered opacity to allow Galaxy effect to shine */}
+      {/* Global Subtle Grid Pattern */}
       <div 
         className="fixed inset-0 z-0 pointer-events-none opacity-20 dark:opacity-10 animate-pan-grid bg-grid-custom"
       ></div>
