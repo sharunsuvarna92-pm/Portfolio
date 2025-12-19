@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Terminal, Moon, Sun } from 'lucide-react';
 
@@ -9,6 +10,7 @@ const Navbar: React.FC = () => {
     { name: 'About', id: 'about' },
     { name: 'Methodology', id: 'methodology' },
     { name: 'Case Studies', id: 'work' },
+    { name: 'Projects', id: 'projects' },
     { name: 'Skills', id: 'skills' },
     { name: 'Contact', id: 'contact' },
   ];
