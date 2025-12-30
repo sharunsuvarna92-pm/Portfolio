@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 
 const BackgroundAnimation: React.FC = () => {
@@ -26,8 +25,14 @@ const BackgroundAnimation: React.FC = () => {
     const connectionDistance = 160;
 
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const parent = canvas.parentElement;
+      if (parent) {
+        canvas.width = parent.clientWidth;
+        canvas.height = parent.clientHeight;
+      } else {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
       createParticles();
     };
 
@@ -72,8 +77,8 @@ const BackgroundAnimation: React.FC = () => {
 
     const updateParticles = () => {
       particles.forEach(p => {
-        const dx = mouse.x - p.x;
-        const dy = mouse.y - p.y;
+        const dx = (mouse.x - canvas.getBoundingClientRect().left) - p.x;
+        const dy = (mouse.y - canvas.getBoundingClientRect().top) - p.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
         const maxDistance = 250;
 
@@ -169,15 +174,18 @@ const BackgroundAnimation: React.FC = () => {
         ctx.restore();
       });
 
+      const relMouseX = mouse.x - canvas.getBoundingClientRect().left;
+      const relMouseY = mouse.y - canvas.getBoundingClientRect().top;
+
       if (mouse.x !== -1000) {
         ctx.save();
-        const gradient = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 220);
+        const gradient = ctx.createRadialGradient(relMouseX, relMouseY, 0, relMouseX, relMouseY, 220);
         gradient.addColorStop(0, 'rgba(0, 242, 255, 0.2)');
         gradient.addColorStop(0.5, 'rgba(0, 212, 255, 0.05)');
         gradient.addColorStop(1, 'rgba(0, 212, 255, 0)');
         ctx.fillStyle = gradient;
         ctx.beginPath();
-        ctx.arc(mouse.x, mouse.y, 220, 0, Math.PI * 2);
+        ctx.arc(relMouseX, relMouseY, 220, 0, Math.PI * 2);
         ctx.fill();
         ctx.restore();
       }
@@ -218,7 +226,7 @@ const BackgroundAnimation: React.FC = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 w-full h-full pointer-events-none transition-opacity duration-1000"
+      className="absolute inset-0 w-full h-full pointer-events-none transition-opacity duration-1000"
       style={{ zIndex: 0 }}
     />
   );

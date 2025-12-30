@@ -1,125 +1,131 @@
-
 import React from 'react';
 import { ABOUT_CONTENT, PROFILE, EXPERIENCE } from '../constants';
 import { Briefcase } from 'lucide-react';
+import BackgroundAnimation from './BackgroundAnimation';
 
 const About: React.FC = () => {
   return (
-    <section id="about" className="py-12 md:py-24 bg-white/40 dark:bg-midnight/40 relative transition-colors duration-300 backdrop-blur-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="about" className="py-12 md:py-16 bg-white/40 dark:bg-midnight/40 relative transition-colors duration-300 backdrop-blur-sm">
+      {/* Background animation restricted to the top of this section */}
+      <div className="absolute top-0 left-0 w-full h-[600px] overflow-hidden pointer-events-none opacity-40">
+        <BackgroundAnimation />
+      </div>
+
+      <div className="max-w-6xl mx-auto px-6 sm:px-10 relative z-10">
         <div className="lg:grid lg:grid-cols-12 lg:gap-16 items-center">
-          <div className="lg:col-span-5 mb-10 lg:mb-0 relative">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/5] bg-slate-200 dark:bg-slate-800 group border border-slate-100 dark:border-blue-900/30">
+          <div className="lg:col-span-4 mb-8 lg:mb-0 relative">
+            <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[4/5] bg-slate-200 dark:bg-slate-800 group border border-slate-100 dark:border-blue-900/20">
                <img 
                 src={PROFILE.image}
                 alt={PROFILE.name}
                 className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
                />
                <div className="absolute bottom-6 left-6 text-white drop-shadow-md">
-                  <p className="font-bold text-xl">{PROFILE.name}</p>
-                  <p className="text-blue-300 text-sm">{PROFILE.location}</p>
+                  <p className="font-bold text-lg">{PROFILE.name}</p>
+                  <p className="text-blue-300 text-[10px] font-black uppercase tracking-wider">{PROFILE.location}</p>
                </div>
             </div>
-            {/* Decorative background element - Animated */}
-            <div className="absolute -top-4 -right-4 w-24 h-24 bg-blue-100 dark:bg-blue-600/10 rounded-br-3xl -z-10 animate-pulse"></div>
-            <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-slate-100 dark:bg-slate-800 rounded-tl-3xl -z-10 animate-pulse animation-delay-2000"></div>
           </div>
 
-          <div className="lg:col-span-7">
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl mb-6">
-              From Mechanical Systems to <span className="text-blue-600 dark:text-blue-400">Digital Ecosystems</span>
+          <div className="lg:col-span-8">
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl mb-4 leading-tight">
+              From Mechanical Systems to <br/><span className="text-blue-600 dark:text-blue-400">Digital Ecosystems</span>
             </h2>
-            <div className="prose prose-lg text-slate-600 dark:text-slate-300">
+            <div className="prose prose-slate dark:prose-invert max-w-2xl">
               {ABOUT_CONTENT.split('\n\n').map((paragraph, index) => (
-                <p key={index} className="mb-4">{paragraph}</p>
+                <p key={index} className="mb-3 text-xs md:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{paragraph}</p>
               ))}
             </div>
             
             <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
-              <div className="p-4 bg-white/50 dark:bg-slate-900/60 backdrop-blur-sm rounded-lg text-center border border-slate-100 dark:border-blue-900/20 hover:border-blue-200 dark:hover:border-blue-400 transition-colors">
-                <span className="block text-2xl font-bold text-blue-600 dark:text-blue-400">200+</span>
-                <span className="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wide">Sites Managed</span>
-              </div>
-              <div className="p-4 bg-white/50 dark:bg-slate-900/60 backdrop-blur-sm rounded-lg text-center border border-slate-100 dark:border-blue-900/20 hover:border-blue-200 dark:hover:border-blue-400 transition-colors">
-                <span className="block text-2xl font-bold text-blue-600 dark:text-blue-400">$2M+</span>
-                <span className="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wide">Project Value</span>
-              </div>
-              <div className="p-4 bg-white/50 dark:bg-slate-900/60 backdrop-blur-sm rounded-lg text-center border border-slate-100 dark:border-blue-900/20 hover:border-blue-200 dark:hover:border-blue-400 transition-colors">
-                <span className="block text-2xl font-bold text-blue-600 dark:text-blue-400">10+</span>
-                <span className="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wide">Global Squads</span>
-              </div>
-              <div className="p-4 bg-white/50 dark:bg-slate-900/60 backdrop-blur-sm rounded-lg text-center border border-slate-100 dark:border-blue-900/20 hover:border-blue-200 dark:hover:border-blue-400 transition-colors">
-                <span className="block text-2xl font-bold text-blue-600 dark:text-blue-400">3+</span>
-                <span className="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wide">Fortune 500s</span>
-              </div>
+              {[
+                { label: "Sites Managed", value: "200+" },
+                { label: "Project Value", value: "$2M+" },
+                { label: "Global Squads", value: "10+" },
+                { label: "Fortune 500s", value: "3+" }
+              ].map((stat) => (
+                <div key={stat.label} className="p-3 bg-white/50 dark:bg-slate-900/60 backdrop-blur-sm rounded-xl text-center border border-slate-100 dark:border-blue-900/10 hover:border-blue-200 dark:hover:border-blue-400/30 transition-all shadow-sm">
+                  <span className="block text-xl font-bold text-blue-600 dark:text-blue-400 mb-0.5">{stat.value}</span>
+                  <span className="text-[9px] text-slate-500 dark:text-slate-500 uppercase tracking-widest font-black">{stat.label}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
 
-        {/* Professional Journey */}
+        {/* Alternating Professional Timeline */}
         <div className="mt-16 md:mt-24">
-            <div className="flex items-center gap-3 mb-12">
-                <div className="p-2.5 bg-blue-50 dark:bg-blue-900/40 text-blue-600 dark:text-blue-300 rounded-xl">
-                    <Briefcase className="h-6 w-6" />
+            <div className="flex items-center justify-center gap-3 mb-12">
+                <div className="p-2 bg-blue-50 dark:bg-blue-900/40 text-blue-600 dark:text-blue-300 rounded-xl">
+                    <Briefcase className="h-4 w-4" />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white">Professional Journey</h3>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white uppercase tracking-tight">Professional Journey</h3>
             </div>
             
-            <div className="relative max-w-4xl mx-auto">
-                {/* Continuous Line */}
-                <div className="hidden md:block absolute left-12 top-4 bottom-4 w-0.5 bg-slate-200 dark:bg-blue-900/30" />
+            <div className="relative max-w-5xl mx-auto px-4 sm:px-0">
+                {/* Central Vertical Spine */}
+                <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px border-l-2 border-dashed border-slate-200 dark:border-slate-800 -translate-x-1/2" />
 
-                <div className="space-y-12">
+                <div className="space-y-16 md:space-y-24">
                     {EXPERIENCE.map((exp, index) => {
-                        const isFirst = index === 0;
+                        const isEven = index % 2 === 0;
 
                         return (
-                            <div key={index} className="relative pl-0 md:pl-40 group">
-                                {/* Logo Bubble */}
-                                <div className={`
-                                    relative mb-6 md:mb-0 md:absolute md:left-0 md:top-0 
-                                    h-20 w-20 md:h-24 md:w-24 
-                                    rounded-3xl border-2 z-10 
-                                    bg-white dark:bg-midnight 
-                                    overflow-hidden transition-all duration-300 
-                                    flex items-center justify-center 
-                                    ${isFirst 
-                                      ? 'border-blue-600 dark:border-blue-500 shadow-xl shadow-blue-200 dark:shadow-blue-900/50 scale-105' 
-                                      : 'border-slate-200 dark:border-blue-900/40 group-hover:border-blue-400 group-hover:shadow-md'
-                                    }
-                                `}>
-                                    <img 
-                                        src={exp.logoUrl} 
-                                        alt={exp.company}
-                                        className="h-full w-full object-contain p-2"
-                                    />
+                            <div key={index} className="relative flex flex-col md:flex-row items-center justify-between">
+                                
+                                {/* Timeline Intersection Node */}
+                                <div className="absolute left-4 md:left-1/2 top-0 md:top-6 -translate-x-1/2 z-20">
+                                    <div className="w-6 h-6 rounded-full bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 flex items-center justify-center shadow-lg group">
+                                        <div className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
+                                    </div>
                                 </div>
 
-                                {/* Content Card */}
-                                <div className={`p-6 md:p-8 rounded-2xl border transition-all duration-300 relative min-h-[100px] flex flex-col justify-center backdrop-blur-md ${isFirst ? 'bg-white/80 dark:bg-slate-900/60 border-blue-200 dark:border-blue-500/40 shadow-xl shadow-blue-50/50 dark:shadow-blue-900/30' : 'bg-white/60 dark:bg-slate-900/40 border-slate-100 dark:border-blue-900/20 hover:bg-white dark:hover:bg-slate-900/60 hover:shadow-lg'}`}>
-                                    {isFirst && (
-                                        <div className="absolute -top-3 -right-3">
-                                            <span className="relative flex h-4 w-4">
-                                              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                                              <span className="relative inline-flex rounded-full h-4 w-4 bg-blue-500"></span>
-                                            </span>
+                                {/* Content Side A (Company Info or Role depending on index) */}
+                                <div className={`w-full md:w-[42%] pl-12 md:pl-0 ${isEven ? 'md:text-right' : 'md:text-left order-2 md:order-1'}`}>
+                                    {isEven ? (
+                                        /* Company Column */
+                                        <div className="flex flex-col md:items-end">
+                                            <div className="w-20 h-20 md:w-24 md:h-24 bg-white dark:bg-slate-900 rounded-xl p-2 border border-slate-100 dark:border-slate-800 shadow-sm mb-3">
+                                                <img src={exp.logoUrl} alt={exp.company} className="w-full h-full object-contain" />
+                                            </div>
+                                            <h4 className="text-lg font-bold text-slate-900 dark:text-white leading-tight">{exp.company}</h4>
+                                            <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mt-1">
+                                                {PROFILE.location} • {exp.period}
+                                            </p>
+                                        </div>
+                                    ) : (
+                                        /* Role Column */
+                                        <div>
+                                            <h4 className="text-base font-bold text-slate-900 dark:text-white leading-snug">{exp.role}</h4>
+                                            <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-3 leading-relaxed">
+                                                {exp.description}
+                                            </p>
                                         </div>
                                     )}
-                                    
-                                    <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4">
-                                        <div>
-                                            <h4 className={`text-xl font-bold ${isFirst ? 'text-slate-900 dark:text-white' : 'text-slate-700 dark:text-slate-200'}`}>
-                                                {exp.company}
-                                            </h4>
-                                            <p className={`font-semibold text-lg mt-1 ${isFirst ? 'text-blue-600 dark:text-blue-400' : 'text-slate-500 dark:text-slate-400'}`}>{exp.role}</p>
+                                </div>
+
+                                {/* Content Side B */}
+                                <div className={`w-full md:w-[42%] mt-4 md:mt-0 pl-12 md:pl-0 ${isEven ? 'md:text-left order-2' : 'md:text-right order-1 md:order-2'}`}>
+                                    {isEven ? (
+                                        /* Role Column */
+                                        <div className="md:pt-6">
+                                            <h4 className="text-base font-bold text-slate-900 dark:text-white leading-snug">{exp.role}</h4>
+                                            <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-3 leading-relaxed">
+                                                {exp.description}
+                                            </p>
                                         </div>
-                                        <span className={`self-start inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide whitespace-nowrap ${isFirst ? 'bg-blue-600 text-white shadow-md shadow-blue-200 dark:shadow-none' : 'bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300'}`}>
-                                            {exp.period}
-                                        </span>
-                                    </div>
-                                    <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-base">
-                                        {exp.description}
-                                    </p>
+                                    ) : (
+                                        /* Company Column */
+                                        <div className="flex flex-col md:items-start md:pt-6">
+                                            <div className="w-20 h-20 md:w-24 md:h-24 bg-white dark:bg-slate-900 rounded-xl p-2 border border-slate-100 dark:border-slate-800 shadow-sm mb-3">
+                                                <img src={exp.logoUrl} alt={exp.company} className="w-full h-full object-contain" />
+                                            </div>
+                                            <h4 className="text-lg font-bold text-slate-900 dark:text-white leading-tight">{exp.company}</h4>
+                                            <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mt-1">
+                                                {PROFILE.location} • {exp.period}
+                                            </p>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         )

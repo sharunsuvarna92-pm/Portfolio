@@ -10,7 +10,7 @@ export const PROFILE = {
   name: "Sharun Suvarna",
   role: "Project Lead | Product Delivery",
   email: "sharunsuvarna92@gmail.com",
-  linkedin: "https://linkedin.com/in/sharun-suvarna",
+  linkedin: "https://www.linkedin.com/in/sharunsuvarna/",
   location: "Mangalore, India",
   phone: "+91 9945941783",
   // REPLACE THE STRING BELOW WITH YOUR OWN BASE64 IMAGE STRING
@@ -42,21 +42,21 @@ export const EXPERIENCE: ExperienceItem[] = [
     role: "Project Lead - Product Delivery & Solutions",
     period: "Jan 2022 - Present",
     description: "Directing end-to-end delivery of enterprise SaaS solutions for Fortune 500 clients. Ownership of the full product lifecycle from requirements definition to global rollout, converting pilot initiatives into multimillion-dollar contracts. Coordinating 10+ cross-functional squads (Product, Engineering, QA) to deliver complex IoT and AI integrations.",
-    logoUrl: "https://media.licdn.com/dms/image/v2/D560BAQHbMpcrYkp9Qw/company-logo_200_200/company-logo_200_200/0/1727849075962/sclera_platform_logo?e=1766620800&v=beta&t=uy6HjApIzNuDZFQOn_GWHn57LecUqzeEn8irPt3J4_Q" 
+    logoUrl: "https://media.licdn.com/dms/image/v2/D560BAQHbMpcrYkp9Qw/company-logo_200_200/company-logo_200_200/0/1727849075962/sclera_platform_logo?e=1768435200&v=beta&t=bobiUAlEPY_rDfq5-oGpcMgoM6NXc-Snw7gK-GTaCJA" 
   },
   {
     company: "Bharat Electronics Limited",
     role: "Trainee Engineer - Project Management",
     period: "Mar 2021 - Dec 2021",
     description: "Coordinated cross-functional teams for mission-critical defense communication projects. Streamlined procurement workflows for 800+ orders and ensured timely delivery of 4 major projects aligned with strict government quality standards.",
-    logoUrl: "https://media.licdn.com/dms/image/v2/D560BAQEoT1DsKihRxQ/company-logo_200_200/company-logo_200_200/0/1725596070207/bharat_electronics_limited_logo?e=1766620800&v=beta&t=wq1fcyPHGYvuO8pa_hG5tm3aCF-E_dSLMHFszU2Jssc"
+    logoUrl: "https://media.licdn.com/dms/image/v2/D560BAQEoT1DsKihRxQ/company-logo_200_200/company-logo_200_200/0/1725596070207/bharat_electronics_limited_logo?e=1768435200&v=beta&t=mYZ-nJQo9KpUOg28pdWyU4f0rEDfSwOfVRCIZ6RFnJQ"
   },
   {
     company: "Ventare Engineering",
     role: "Junior Engineer - Systems Implementation",
     period: "July 2018 - April 2019",
     description: "Supported the $3M+ EPIC delivery of complex infrastructure projects. Oversaw system installations and ensured compliance with international standards, coordinating across consultants and subcontractors to drive project milestones.",
-    logoUrl: "https://media.licdn.com/dms/image/v2/C560BAQGmDXKm6YdcLQ/company-logo_200_200/company-logo_200_200/0/1630605343288/ventare_engineering_wll_logo?e=1766620800&v=beta&t=26MwXRK1V_mpMqkOfGlI-6v-AfOKsTywbTjqQi4nO3A"
+    logoUrl: "https://media.licdn.com/dms/image/v2/C560BAQGmDXKm6YdcLQ/company-logo_200_200/company-logo_200_200/0/1630605343288/ventare_engineering_wll_logo?e=1768435200&v=beta&t=4_3psa89Kh3t1WMsVj3Gc3Desi9TshhDZOgL-Gpqzes"
   }
 ];
 
@@ -266,28 +266,28 @@ export const CERTIFICATIONS = [
     issuer: "Scrum.org",
     year: "Certified",
     description: "Validated knowledge of Agile-based project management, iterative product development, and cross-team collaboration.",
-    logoUrl: "https://media.licdn.com/dms/image/v2/C560BAQFzF6WZjNSHkQ/company-logo_200_200/company-logo_200_200/0/1631433558836?e=1766620800&v=beta&t=ESakfHF9ErrltzL9fWqS0oudShpx2asUgXr3l4FiZFE"
+    logoUrl: "https://media.licdn.com/dms/image/v2/C560BAQFzF6WZjNSHkQ/company-logo_200_200/company-logo_200_200/0/1631433558836?e=1768435200&v=beta&t=lPvL7mYRaV6W2nh8YgfN4jLkF_RQHqS4iXYN4X9Te-k"
   },
   {
     name: "AWS Certified Cloud Practitioner",
     issuer: "Amazon Web Services",
     year: "Certified",
     description: "Foundational understanding of AWS cloud services, security, and architecture.",
-    logoUrl: "https://media.licdn.com/dms/image/v2/D4E0BAQFqdm1TZ-RZKQ/company-logo_200_200/B4EZgOay6gHEAQ-/0/1752588562343/amazon_web_services_logo?e=1766620800&v=beta&t=VMW7w_GOx3s3bwVa_ItZLQmZKit2Nvb5NOY9ZRMNlmU"
+    logoUrl: "https://media.licdn.com/dms/image/v2/D4E0BAQFqdm1TZ-RZKQ/company-logo_200_200/B4EZgOay6gHEAQ-/0/1752588562343/amazon_web_services_logo?e=1768435200&v=beta&t=p7xmh7C_fIESSKGmwH7Xre95eYIK1KYJ75m2TCpBC-M"
   },
   {
     name: "Prompt Engineering & Programming",
     issuer: "Columbia+",
     year: "Certified",
     description: "Prompt design, OpenAI API integration, and applying LLMs for automation and data analysis.",
-    logoUrl: "https://media.licdn.com/dms/image/v2/D4E0BAQE4nqCgfgkynw/company-logo_200_200/company-logo_200_200/0/1713832705156/columbiaplus_logo?e=1766620800&v=beta&t=siQ9-1F752OAvQHrOTTuX20j_CAHqbQJwOmJX5tJBg0"
+    logoUrl: "https://media.licdn.com/dms/image/v2/D4E0BAQE4nqCgfgkynw/company-logo_200_200/company-logo_200_200/0/1713832705156/columbiaplus_logo?e=1768435200&v=beta&t=bMnp-mhhIoyVSfZKFehDoe7KgBOitmqphCLChbTh0O8"
   },
   {
     name: "Agile Project Management",
     issuer: "Atlassian",
     year: "Certified",
     description: "Agile fundamentals, Kanban/Scrum frameworks, and Jira Software configuration.",
-    logoUrl: "https://media.licdn.com/dms/image/v2/D4E0BAQGeyLL6crkJKg/company-logo_200_200/company-logo_200_200/0/1735593604612/atlassian_logo?e=1766620800&v=beta&t=yI_bQ-d4_P3TvSQdkSEzyb8UslUYe5Dl2RqQh-VnB1U"
+    logoUrl: "https://media.licdn.com/dms/image/v2/D4E0BAQGeyLL6crkJKg/company-logo_200_200/company-logo_200_200/0/1735593604612/atlassian_logo?e=1768435200&v=beta&t=h824lJf-O5mBytJISkg2NxQwwevZNVnY5vLuq1aUXh0"
   }
 ];
 
