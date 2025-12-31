@@ -5,6 +5,8 @@ export interface CaseStudy {
   client: string;
   role: string;
   summary: string;
+  // Added optional imageUrl property to satisfy usage and resolve TypeScript errors in components/CaseStudies.tsx
+  imageUrl?: string;
   star: {
     situation: string;
     task: string;

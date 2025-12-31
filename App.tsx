@@ -1,6 +1,8 @@
+
 import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import TrustBar from './components/TrustBar';
 import About from './components/About';
 import Projects from './components/Projects';
 import CaseStudies from './components/CaseStudies';
@@ -22,6 +24,7 @@ function App() {
         <SocialSidebar />
         <main>
           <Hero />
+          <TrustBar />
           <About />
           <Methodology />
           <CaseStudies />

@@ -1,6 +1,6 @@
 import React from 'react';
 import { SKILLS, TOOLS_LOGOS, CERTIFICATIONS } from '../constants';
-import { Settings, Users, Code2, BadgeCheck } from 'lucide-react';
+import { Settings, Users, Code2, BadgeCheck, Info } from 'lucide-react';
 import BackgroundAnimation from './BackgroundAnimation';
 
 const icons: Record<string, React.ReactNode> = {
@@ -18,37 +18,75 @@ const Skills: React.FC = () => {
       
       <div className="max-w-6xl mx-auto px-6 sm:px-10 relative z-10">
         <div className="text-center mb-16">
-            <span className="text-blue-600 dark:text-blue-400 text-[10px] font-bold uppercase tracking-[0.4em] mb-4 block">Knowledge Stack</span>
+            <span className="text-blue-600 dark:text-blue-400 text-xs font-bold uppercase tracking-widest mb-4 block">Knowledge Stack</span>
             <h2 className="font-display text-3xl font-black text-slate-900 dark:text-white sm:text-5xl mb-4 tracking-tight">Technical Ecosystem</h2>
-            <p className="text-sm md:text-base text-slate-500 dark:text-slate-400 max-w-xl mx-auto leading-relaxed font-medium">
+            <p className="text-base text-slate-500 dark:text-slate-400 max-w-xl mx-auto leading-relaxed font-medium">
                 A specialized toolkit encompassing engineering rigor, product strategy, and cloud-native architecture.
             </p>
         </div>
 
-        {/* Certifications Section */}
+        {/* Certifications Section with Flip Cards */}
         <div className="mb-20">
           <div className="flex items-center justify-between mb-8">
-            <h3 className="font-display text-[11px] font-black text-slate-900 dark:text-white flex items-center gap-3 uppercase tracking-[0.3em]">
+            <h3 className="font-display text-sm font-bold text-slate-900 dark:text-white flex items-center gap-3 uppercase tracking-widest">
                 <BadgeCheck className="h-5 w-5 text-blue-600 dark:text-blue-500" />
                 Core Credentials
             </h3>
             <div className="h-px flex-grow bg-slate-200 dark:bg-slate-800 ml-6 hidden md:block opacity-30"></div>
           </div>
+          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {CERTIFICATIONS.map((cert, index) => (
-              <div key={index} className="bg-slate-50 dark:bg-slate-900/80 p-6 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800 hover:border-blue-500 transition-all group hover:-translate-y-2 hover:shadow-2xl">
-                <div className="w-16 h-16 mx-auto mb-6 bg-white dark:bg-midnight rounded-2xl p-3 flex items-center justify-center group-hover:scale-110 transition-transform shadow-inner">
-                  <img 
-                    src={cert.logoUrl} 
-                    alt={cert.issuer}
-                    className="w-full h-full object-contain"
-                  />
+              <div key={index} className="flip-card h-[320px] w-full group">
+                <div className="flip-card-inner w-full h-full relative">
+                  
+                  {/* Front Side - Increased Logo and Added Issuer */}
+                  <div className="flip-card-front bg-slate-50 dark:bg-slate-900/80 p-8 flex flex-col items-center justify-center border border-slate-200 dark:border-slate-800 shadow-sm transition-all duration-500 group-hover:border-blue-500/50">
+                    <div className="w-20 h-20 mb-6 bg-white dark:bg-midnight rounded-2xl p-4 flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform">
+                      <img 
+                        src={cert.logoUrl} 
+                        alt={cert.issuer}
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                    <div className="text-center">
+                      <p className="text-[10px] font-bold text-blue-600 dark:text-blue-400 uppercase tracking-[0.2em] mb-2">
+                        {cert.issuer}
+                      </p>
+                      <h4 className="font-display font-extrabold text-slate-900 dark:text-white text-base leading-tight tracking-tight px-4">
+                        {cert.name}
+                      </h4>
+                    </div>
+                    <div className="mt-8 flex items-center gap-2 text-slate-400 text-[10px] font-bold uppercase tracking-[0.2em] opacity-30 group-hover:opacity-100 transition-opacity">
+                      <Info className="h-3 w-3" />
+                      Hover for Info
+                    </div>
+                  </div>
+
+                  {/* Back Side */}
+                  <div className="flip-card-back bg-white dark:bg-slate-800 p-8 flex flex-col items-center justify-center border border-blue-500/30 shadow-2xl overflow-hidden">
+                    <div className="absolute top-0 right-0 p-4 opacity-5">
+                       <BadgeCheck className="h-16 w-16 text-blue-600" />
+                    </div>
+                    
+                    <p className="text-xs text-blue-600 dark:text-blue-400 font-bold mb-4 tracking-widest uppercase">
+                      {cert.issuer}
+                    </p>
+                    
+                    <div className="h-px w-8 bg-blue-200 dark:bg-blue-900 mb-6"></div>
+                    
+                    <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
+                      {cert.description}
+                    </p>
+                    
+                    <div className="mt-8 flex flex-wrap justify-center gap-2">
+                      <span className="px-3 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-[9px] font-bold uppercase tracking-widest rounded-lg border border-blue-100 dark:border-blue-800">
+                        {cert.year}
+                      </span>
+                    </div>
+                  </div>
+                  
                 </div>
-                <h4 className="font-display font-extrabold text-slate-900 dark:text-white text-[14px] mb-1.5 leading-tight text-center tracking-tight">{cert.name}</h4>
-                <p className="text-[9px] text-blue-600 dark:text-blue-400 font-black mb-3 text-center tracking-widest uppercase">{cert.issuer}</p>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed text-center font-medium">
-                  {cert.description}
-                </p>
               </div>
             ))}
           </div>
@@ -62,9 +100,9 @@ const Skills: React.FC = () => {
                 {icons[category.icon]}
               </div>
               <h3 className="font-display text-lg font-black text-slate-900 dark:text-white mb-6 tracking-tight">{category.title}</h3>
-              <ul className="space-y-3.5">
+              <ul className="space-y-4">
                 {category.skills.map((skill) => (
-                  <li key={skill} className="flex items-center text-slate-600 dark:text-slate-400 font-bold text-[11px] uppercase tracking-wider">
+                  <li key={skill} className="flex items-center text-slate-600 dark:text-slate-400 font-bold text-xs uppercase tracking-wider">
                     <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-4 flex-shrink-0 shadow-[0_0_8px_rgba(59,130,246,0.6)]"></span>
                     {skill}
                   </li>
@@ -77,7 +115,7 @@ const Skills: React.FC = () => {
         {/* Tools Grid */}
         <div className="bg-slate-950 dark:bg-black rounded-[3rem] p-12 relative overflow-hidden transition-all duration-500 shadow-2xl border border-white/5 ring-1 ring-white/10">
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_0%,rgba(59,130,246,0.1),transparent_50%)]"></div>
-            <p className="font-display text-center text-slate-500 uppercase tracking-[0.45em] text-[10px] mb-12 font-black relative z-10">Enterprise Stack Proficiency</p>
+            <p className="font-display text-center text-slate-500 uppercase tracking-widest text-xs mb-12 font-bold relative z-10">Enterprise Stack Proficiency</p>
             <div className="flex flex-wrap justify-center gap-12 md:gap-20 relative z-10">
                 {TOOLS_LOGOS.map((tool, idx) => (
                     <div 
@@ -91,7 +129,7 @@ const Skills: React.FC = () => {
                             className="w-full h-full object-contain filter grayscale invert brightness-75 group-hover:grayscale-0 group-hover:invert-0 group-hover:brightness-100 transition-all duration-500"
                           />
                         </div>
-                        <span className="text-[9px] font-black uppercase tracking-[0.35em] text-slate-600 group-hover:text-blue-400 transition-colors duration-300">{tool.name}</span>
+                        <span className="text-xs font-bold uppercase tracking-widest text-slate-600 group-hover:text-blue-400 transition-colors duration-300">{tool.name}</span>
                     </div>
                 ))}
             </div>

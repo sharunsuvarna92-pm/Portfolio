@@ -1,6 +1,6 @@
 import React from 'react';
-import { ArrowRight, ChevronDown } from 'lucide-react';
-import { HERO_CONTENT, CLIENT_LOGOS } from '../constants';
+import { ArrowRight } from 'lucide-react';
+import { HERO_CONTENT } from '../constants';
 import BackgroundAnimation from './BackgroundAnimation';
 
 const Hero: React.FC = () => {
@@ -12,20 +12,20 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <div className="relative bg-transparent overflow-hidden min-h-[75vh] flex items-center justify-center z-0 py-12 md:py-20">
+    <div className="relative bg-transparent overflow-hidden min-h-[50vh] flex items-center justify-center z-0 py-12 md:py-20">
       <BackgroundAnimation />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(240,249,255,0.4)_0%,rgba(248,250,252,0)_100%)] dark:bg-[radial-gradient(circle_at_center,rgba(30,58,138,0.15)_0%,rgba(3,7,18,0.95)_100%)] pointer-events-none z-0"></div>
 
       <div className="max-w-6xl mx-auto px-6 sm:px-10 relative z-30 text-center">
         
         {/* Badge */}
-        <div className="inline-flex items-center px-4 py-2 rounded-full border border-blue-500/20 bg-white/10 dark:bg-blue-900/20 text-blue-600 dark:text-blue-300 text-[10px] font-bold uppercase tracking-[0.25em] mb-8 backdrop-blur-xl animate-fade-in-up shadow-2xl">
+        <div className="inline-flex items-center px-4 py-2 rounded-full border border-blue-500/20 bg-white/10 dark:bg-blue-900/20 text-blue-600 dark:text-blue-300 text-xs font-bold uppercase tracking-widest mb-6 backdrop-blur-xl animate-fade-in-up shadow-sm">
           <span className="flex h-2 w-2 rounded-full bg-blue-500 dark:bg-blue-400 mr-3 animate-pulse"></span>
           Project Lead | Product Delivery | Strategic Operations
         </div>
         
         {/* Headline */}
-        <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-black text-slate-900 dark:text-white tracking-tight leading-[1.05] mb-8 animate-fade-in-up delay-100 max-w-5xl mx-auto">
+        <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-[1.1] mb-6 animate-fade-in-up delay-100 max-w-4xl mx-auto">
           I bridge the gap between complex operations & <span className="rich-gradient-text">scalable digital products.</span>
         </h1>
 
@@ -35,41 +35,21 @@ const Hero: React.FC = () => {
         </p>
 
         {/* CTA Buttons */}
-        <div className="mt-12 flex flex-col sm:flex-row gap-5 justify-center relative z-20 animate-fade-in-up delay-300">
+        <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center relative z-20 animate-fade-in-up delay-300">
           <button 
             onClick={() => scrollToSection('work')}
-            className="group inline-flex items-center justify-center px-10 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-[11px] font-black uppercase tracking-[0.15em] rounded-2xl text-white hover:shadow-[0_0_30px_rgba(37,99,235,0.4)] transition-all cursor-pointer transform hover:-translate-y-1 active:scale-95"
+            className="group inline-flex items-center justify-center px-8 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-xs font-bold uppercase tracking-widest rounded-xl text-white hover:shadow-[0_0_20px_rgba(37,99,235,0.3)] transition-all cursor-pointer transform hover:-translate-y-1 active:scale-95"
           >
             Explore Case Studies
             <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </button>
           <button 
             onClick={() => scrollToSection('contact')}
-            className="inline-flex items-center justify-center px-10 py-4 border border-slate-200 dark:border-blue-500/20 text-[11px] font-black uppercase tracking-[0.15em] rounded-2xl text-slate-700 dark:text-white bg-white/50 dark:bg-slate-900/50 hover:bg-white/80 dark:hover:bg-slate-800 transition-all cursor-pointer backdrop-blur-xl transform hover:-translate-y-1 active:scale-95 shadow-sm"
+            className="inline-flex items-center justify-center px-8 py-3.5 border border-slate-200 dark:border-blue-500/20 text-xs font-bold uppercase tracking-widest rounded-xl text-slate-700 dark:text-white bg-white/50 dark:bg-slate-900/50 hover:bg-white/80 dark:hover:bg-slate-800 transition-all cursor-pointer backdrop-blur-xl transform hover:-translate-y-1 active:scale-95"
           >
             Get in Touch
           </button>
         </div>
-        
-        {/* Trust Bar */}
-        <div className="mt-20 md:mt-24 pt-10 border-t border-slate-200/50 dark:border-white/5 animate-fade-in-up delay-300">
-          <p className="text-[10px] text-slate-400 dark:text-slate-500 uppercase tracking-[0.4em] font-black mb-8">Powering Solutions for</p>
-          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-50 dark:opacity-40 grayscale hover:grayscale-0 transition-all duration-1000">
-             {CLIENT_LOGOS.map((client) => (
-               <div key={client.name} className="group relative">
-                 <img 
-                   src={client.logoUrl} 
-                   alt={client.name}
-                   className="h-5 md:h-7 w-auto object-contain dark:invert transition-all duration-500 transform group-hover:scale-110"
-                 />
-               </div>
-             ))}
-          </div>
-        </div>
-      </div>
-
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-slate-300 dark:text-blue-400/20 animate-bounce hidden md:block pointer-events-none z-30">
-        <ChevronDown className="h-5 w-5" />
       </div>
     </div>
   );

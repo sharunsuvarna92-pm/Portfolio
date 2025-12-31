@@ -9,7 +9,7 @@ const Contact: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 mb-16">
           <div>
             <h2 className="text-2xl md:text-4xl font-black text-slate-900 dark:text-white mb-5 leading-tight">Let's build something <br/>scalable.</h2>
-            <p className="text-sm text-slate-600 dark:text-slate-400 mb-8 max-w-lg leading-relaxed">
+            <p className="text-base text-slate-600 dark:text-slate-400 mb-8 max-w-lg leading-relaxed font-medium">
               I'm always open to discussing new opportunities in Product Delivery, Cloud Solutions, and Technical Program Management.
             </p>
             
@@ -50,25 +50,25 @@ const Contact: React.FC = () => {
             </div>
           </div>
 
-          <div className="bg-slate-50 dark:bg-slate-900/40 p-8 rounded-[2rem] border border-slate-200 dark:border-slate-800 shadow-xl backdrop-blur-md">
-             <h3 className="text-[10px] font-black text-slate-900 dark:text-white mb-5 uppercase tracking-widest">Quick Recap</h3>
-             <ul className="space-y-3.5 text-slate-600 dark:text-slate-300">
+          <div className="bg-slate-50 dark:bg-slate-900/40 p-10 rounded-[2rem] border border-slate-200 dark:border-slate-800 shadow-xl backdrop-blur-md">
+             <h3 className="text-xs font-bold text-slate-900 dark:text-white mb-6 uppercase tracking-widest">Quick Recap</h3>
+             <ul className="space-y-4 text-slate-600 dark:text-slate-300">
                 {[
                     "4+ Years delivering Enterprise SaaS & Cloud Solutions.",
                     "Managed 200+ Global Sites for Fortune 500s.",
                     "Certified Scrum Master (PSM I) & AWS Cloud Practitioner.",
                     "Expert in bridging Technical Engineering & Business Strategy."
                 ].map(point => (
-                    <li key={point} className="flex gap-3 items-start">
-                        <div className="h-1.5 w-1.5 bg-blue-500 rounded-full mt-1.5 shrink-0"></div>
-                        <span className="font-bold text-xs">{point}</span>
+                    <li key={point} className="flex gap-4 items-start">
+                        <div className="h-1.5 w-1.5 bg-blue-500 rounded-full mt-2 shrink-0"></div>
+                        <span className="font-bold text-sm">{point}</span>
                     </li>
                 ))}
              </ul>
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8 border-t border-slate-100 dark:border-slate-900 text-slate-400 text-[9px] font-black uppercase tracking-[0.2em]">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-8 border-t border-slate-100 dark:border-slate-900 text-slate-400 text-xs font-bold uppercase tracking-widest">
           <div>&copy; {new Date().getFullYear()} {PROFILE.name}.</div>
           <div className="flex gap-8">
               <a href="#about" className="hover:text-blue-600 transition-colors">Back to top</a>

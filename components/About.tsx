@@ -22,7 +22,7 @@ const About: React.FC = () => {
                />
                <div className="absolute bottom-6 left-6 text-white drop-shadow-md">
                   <p className="font-bold text-lg font-display tracking-tight">{PROFILE.name}</p>
-                  <p className="text-blue-300 text-[10px] font-black uppercase tracking-widest">{PROFILE.location}</p>
+                  <p className="text-blue-300 text-xs font-bold uppercase tracking-widest">{PROFILE.location}</p>
                </div>
             </div>
           </div>
@@ -33,7 +33,7 @@ const About: React.FC = () => {
             </h2>
             <div className="prose prose-slate dark:prose-invert max-w-2xl">
               {ABOUT_CONTENT.split('\n\n').map((paragraph, index) => (
-                <p key={index} className="mb-4 text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed font-medium">{paragraph}</p>
+                <p key={index} className="mb-4 text-base text-slate-600 dark:text-slate-400 leading-relaxed font-medium">{paragraph}</p>
               ))}
             </div>
             
@@ -44,9 +44,9 @@ const About: React.FC = () => {
                 { label: "Global Squads", value: "10+" },
                 { label: "Fortune 500s", value: "3+" }
               ].map((stat) => (
-                <div key={stat.label} className="p-3 bg-white dark:bg-slate-900/90 backdrop-blur-xl rounded-xl text-center border border-slate-200 dark:border-blue-900/30 hover:border-blue-400 dark:hover:border-blue-400 transition-all shadow-md group">
-                  <span className="block text-2xl font-bold font-display text-blue-600 dark:text-blue-400 mb-0.5 group-hover:scale-110 transition-transform">{stat.value}</span>
-                  <span className="text-[9px] text-slate-500 dark:text-slate-500 uppercase tracking-widest font-black">{stat.label}</span>
+                <div key={stat.label} className="p-4 bg-white dark:bg-slate-900/90 backdrop-blur-xl rounded-xl text-center border border-slate-200 dark:border-blue-900/30 hover:border-blue-400 dark:hover:border-blue-400 transition-all shadow-md group">
+                  <span className="block text-3xl font-bold font-display text-blue-600 dark:text-blue-400 mb-0.5 group-hover:scale-110 transition-transform">{stat.value}</span>
+                  <span className="text-xs text-slate-500 dark:text-slate-500 uppercase tracking-widest font-bold">{stat.label}</span>
                 </div>
               ))}
             </div>
@@ -84,14 +84,14 @@ const About: React.FC = () => {
                                                 <img src={exp.logoUrl} alt={exp.company} className="w-full h-full object-contain" />
                                             </div>
                                             <h4 className="font-display text-lg font-bold text-slate-900 dark:text-white leading-tight">{exp.company}</h4>
-                                            <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mt-1">
+                                            <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mt-1">
                                                 {PROFILE.location} • {exp.period}
                                             </p>
                                         </div>
                                     ) : (
-                                        <div className="bg-white dark:bg-slate-900/90 p-5 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
+                                        <div className="bg-white dark:bg-slate-900/90 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
                                             <h4 className="font-display text-base font-bold text-slate-900 dark:text-white leading-snug">{exp.role}</h4>
-                                            <p className="text-[12px] text-slate-500 dark:text-slate-400 mt-3 leading-relaxed font-medium">
+                                            <p className="text-sm text-slate-500 dark:text-slate-400 mt-3 leading-relaxed font-medium">
                                                 {exp.description}
                                             </p>
                                         </div>
@@ -100,9 +100,9 @@ const About: React.FC = () => {
 
                                 <div className={`w-full md:w-[42%] mt-4 md:mt-0 pl-12 md:pl-0 ${isEven ? 'md:text-left order-2' : 'md:text-right order-1 md:order-2'}`}>
                                     {isEven ? (
-                                        <div className="md:pt-6 bg-white dark:bg-slate-900/90 p-5 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
+                                        <div className="md:pt-6 bg-white dark:bg-slate-900/90 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
                                             <h4 className="font-display text-base font-bold text-slate-900 dark:text-white leading-snug">{exp.role}</h4>
-                                            <p className="text-[12px] text-slate-500 dark:text-slate-400 mt-3 leading-relaxed font-medium">
+                                            <p className="text-sm text-slate-500 dark:text-slate-400 mt-3 leading-relaxed font-medium">
                                                 {exp.description}
                                             </p>
                                         </div>
@@ -112,7 +112,7 @@ const About: React.FC = () => {
                                                 <img src={exp.logoUrl} alt={exp.company} className="w-full h-full object-contain" />
                                             </div>
                                             <h4 className="font-display text-lg font-bold text-slate-900 dark:text-white leading-tight">{exp.company}</h4>
-                                            <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mt-1">
+                                            <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mt-1">
                                                 {PROFILE.location} • {exp.period}
                                             </p>
                                         </div>
