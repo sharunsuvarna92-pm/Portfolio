@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
   return (
     <div className="relative bg-transparent overflow-hidden min-h-[50vh] flex items-center justify-center z-0 py-12 md:py-20">
       <BackgroundAnimation />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(240,249,255,0.4)_0%,rgba(248,250,252,0)_100%)] dark:bg-[radial-gradient(circle_at_center,rgba(30,58,138,0.15)_0%,rgba(3,7,18,0.95)_100%)] pointer-events-none z-0"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(240,249,255,0.4)_0%,rgba(248,250,252,0)_100%)] dark:bg-[radial-gradient(circle_at_center,rgba(30,58,138,0.25)_0%,rgba(3,7,18,0.98)_100%)] pointer-events-none z-0"></div>
 
       <div className="max-w-6xl mx-auto px-6 sm:px-10 relative z-30 text-center">
         

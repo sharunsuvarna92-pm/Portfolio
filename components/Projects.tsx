@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { 
   Layers, 
@@ -14,20 +15,22 @@ import {
 const Projects: React.FC = () => {
   return (
     <section id="projects" className="py-16 md:py-24 bg-slate-50 dark:bg-slate-950 relative transition-colors duration-300 border-t border-slate-200 dark:border-blue-900/10">
-      {/* Subtle Blueprint Grid Pattern for a "Laboratory" feel */}
+      {/* Blueprint Grid Pattern - Standardized for PM Theme */}
       <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.07] pointer-events-none bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:40px_40px]"></div>
 
       <div className="max-w-6xl mx-auto px-6 sm:px-10 relative z-10">
-        <div className="mb-12">
+        <div className="mb-12 md:mb-16">
           <div className="flex items-center gap-3 mb-4">
             <div className="p-2 bg-blue-600/10 rounded-lg">
               <FlaskConical className="h-5 w-5 text-blue-600" />
             </div>
-            <span className="text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400">Personal Lab</span>
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-600 dark:text-blue-400">Personal Lab</span>
           </div>
-          <h2 className="text-3xl font-black text-slate-900 dark:text-white sm:text-5xl mb-4 tracking-tight">The Side Quests</h2>
-          <p className="text-base text-slate-500 dark:text-slate-400 max-w-2xl leading-relaxed font-medium">
-            Outside of the boardroom, I build. These are the tools I develop in my free time to scratch my own technical itches and experiment with the "what-ifs" of product delivery.
+          <h2 className="text-4xl font-black text-slate-900 dark:text-white sm:text-6xl mb-6 tracking-tight leading-none">
+            The <span className="rich-gradient-text">Side Quests.</span>
+          </h2>
+          <p className="text-base md:text-lg text-slate-500 dark:text-slate-400 max-w-2xl leading-relaxed font-medium">
+            Outside of enterprise delivery, I architect proprietary tools to solve complex operational bottlenecks. These projects serve as my testing ground for high-concurrency systems and predictive delivery modeling.
           </p>
         </div>
 
@@ -37,7 +40,7 @@ const Projects: React.FC = () => {
               <div className="max-w-xl">
                 <div className="flex items-center gap-2 mb-3">
                     <span className="flex h-2 w-2 rounded-full bg-emerald-500"></span>
-                    <span className="text-xs font-bold uppercase tracking-widest text-slate-400">Personal Project // v1.0 Beta</span>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Core Infrastructure // v1.0 Stable</span>
                 </div>
                 <h3 className="text-xl md:text-2xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
                   Deterministic Resource Planning & Task Scheduling Engine
@@ -45,7 +48,7 @@ const Projects: React.FC = () => {
               </div>
               <div className="flex flex-wrap gap-2">
                 {["Next.js", "Supabase", "PostgreSQL", "Tailwind"].map((tech) => (
-                  <span key={tech} className="px-3 py-1 bg-white dark:bg-slate-800 text-slate-600 dark:text-blue-300 text-xs font-bold uppercase tracking-widest rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                  <span key={tech} className="px-3 py-1 bg-white dark:bg-slate-800 text-slate-600 dark:text-blue-300 text-[10px] font-black uppercase tracking-widest rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
                     {tech}
                   </span>
                 ))}
@@ -59,21 +62,21 @@ const Projects: React.FC = () => {
                   <div>
                     <h4 className="text-xs font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2 uppercase tracking-widest">
                       <Lightbulb className="h-4 w-4 text-amber-500" />
-                      The "Aha!" Moment
+                      Strategic Objective
                     </h4>
                     <div className="space-y-4 text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl font-medium">
-                      <p>In the enterprise world, I saw teams constantly over-committing because capacity planning was a "vibe" rather than a calculation. I built this to turn delivery management into a predictable science.</p>
+                      <p>Built to eliminate capacity guesstimation in enterprise scaling. This engine treats delivery time as a finite resource, applying mathematical rigor to project velocity and resource allocation.</p>
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-6">
                         {[
-                            "Stop 'guesstimating' timelines",
-                            "Model cross-team ripple effects",
-                            "Visualizing hidden capacity leaks",
-                            "Solving for 'Project Exhaustion'"
+                            "Algorithmic Timeline Modeling",
+                            "Dependency Ripple Visualizer",
+                            "Hidden Capacity Optimization",
+                            "Burn-rate Predictive Logic"
                         ].map(item => (
                             <div key={item} className="flex gap-3 items-center bg-slate-50 dark:bg-slate-900/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-800 group-hover:bg-white dark:group-hover:bg-slate-900 transition-colors">
                                 <Zap className="h-4 w-4 text-blue-500 shrink-0" />
-                                <span className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wide">{item}</span>
+                                <span className="text-[10px] font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">{item}</span>
                             </div>
                         ))}
                       </div>
@@ -86,16 +89,16 @@ const Projects: React.FC = () => {
                     </div>
                     <h4 className="text-xs font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2 uppercase tracking-widest relative z-10">
                       <Cpu className="h-4 w-4 text-blue-600" />
-                      How I built it
+                      Infrastructure Architecture
                     </h4>
                     <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-6 relative z-10 font-medium">
-                      A backend-first logic engine that treats time like a finite resource. It's essentially a constraint solver for human effort.
+                      A backend-first constraint solver that manages complex organizational state across multi-threaded delivery streams.
                     </p>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-3 relative z-10">
-                      {["Capacity Engine", "Dependency Map", "Logic Reasoner", "Constraint Solver"].map((point) => (
+                      {["Capacity Logic", "Dependency Mapping", "Heuristic Engine", "Linear Programming"].map((point) => (
                         <div key={point} className="flex flex-col gap-1 p-3 bg-white dark:bg-slate-950 rounded-2xl border border-blue-100/30 dark:border-blue-900/30 shadow-sm">
                           <CheckCircle className="h-3 w-3 text-emerald-500 mb-1" />
-                          <span className="text-[10px] font-bold text-slate-800 dark:text-slate-200 uppercase tracking-widest">{point}</span>
+                          <span className="text-[9px] font-black text-slate-800 dark:text-slate-200 uppercase tracking-widest">{point}</span>
                         </div>
                       ))}
                     </div>
@@ -105,17 +108,17 @@ const Projects: React.FC = () => {
                 <div className="lg:col-span-4 space-y-6">
                   <div className="bg-slate-950 p-8 rounded-[2rem] border border-white/5 shadow-2xl relative overflow-hidden ring-1 ring-white/10">
                     <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_0%,rgba(59,130,246,0.1),transparent_70%)]"></div>
-                    <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-6 relative z-10">Why this matters to me</h4>
+                    <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-6 relative z-10">Operational Value</h4>
                     <ul className="space-y-4 text-xs text-slate-300 relative z-10">
                       {[
-                        "It connects engineering logic with human strategy.",
-                        "It's a sandbox for complex state management.",
-                        "I use it to validate my own delivery projections.",
-                        "Because knowing is better than hoping."
+                        "Standardizes delivery language across teams.",
+                        "Identifies system bottlenecks before they occur.",
+                        "Enforces strict data integrity in scheduling.",
+                        "Translates raw effort into measurable ROI."
                       ].map(item => (
                         <li key={item} className="flex gap-3 items-start">
                            <div className="h-1.5 w-1.5 bg-blue-500 rounded-full mt-1.5 shrink-0 shadow-[0_0_8px_rgba(59,130,246,0.8)]"></div>
-                           <span className="font-medium leading-snug">{item}</span>
+                           <span className="font-bold leading-snug">{item}</span>
                         </li>
                       ))}
                     </ul>
@@ -127,8 +130,8 @@ const Projects: React.FC = () => {
                           <User className="h-5 w-5 text-slate-500 dark:text-slate-400" />
                         </div>
                         <div>
-                          <h4 className="font-bold text-slate-900 dark:text-white text-xs uppercase tracking-widest">The Maker</h4>
-                          <p className="text-xs text-slate-500 mt-0.5">Sharun S. // Sole Architect</p>
+                          <h4 className="font-black text-slate-900 dark:text-white text-[10px] uppercase tracking-[0.2em]">The Architect</h4>
+                          <p className="text-xs text-slate-500 mt-0.5">Sharun S. // Lead Systems Design</p>
                         </div>
                       </div>
                       <div className="flex items-center gap-4">
@@ -136,8 +139,8 @@ const Projects: React.FC = () => {
                           <Zap className="h-5 w-5 text-amber-500" />
                         </div>
                         <div>
-                          <h4 className="font-bold text-slate-900 dark:text-white text-xs uppercase tracking-widest">Current Focus</h4>
-                          <p className="text-xs text-slate-500 mt-0.5">Optimizing the AI heuristics</p>
+                          <h4 className="font-black text-slate-900 dark:text-white text-[10px] uppercase tracking-[0.2em]">Roadmap Focus</h4>
+                          <p className="text-xs text-slate-500 mt-0.5">Automated Heuristic Refinement</p>
                         </div>
                       </div>
                   </div>
@@ -151,18 +154,18 @@ const Projects: React.FC = () => {
                     <Layers className="h-5 w-5" />
                   </div>
                   <div>
-                    <h5 className="font-black text-base text-slate-900 dark:text-white tracking-tight italic">"The Delivery Scientist"</h5>
-                    <p className="text-xs text-slate-400 uppercase tracking-widest mt-1">A playground for architectural resilience.</p>
+                    <h5 className="font-black text-base text-slate-900 dark:text-white tracking-tight">"Execution Integrity"</h5>
+                    <p className="text-xs text-slate-400 uppercase tracking-widest mt-1">Validated against complex multi-project lifecycles.</p>
                   </div>
                 </div>
                 
                 <div className="flex gap-4 w-full lg:w-auto">
                     <button className="flex-1 lg:flex-none px-8 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-950 rounded-2xl font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-3 transition-all hover:scale-105 active:scale-95 shadow-lg">
-                      Explore Repo
+                      Technical Spec
                       <Code2 className="h-4 w-4" />
                     </button>
                     <button className="flex-1 lg:flex-none px-8 py-3 bg-blue-600 text-white rounded-2xl font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-3 transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] active:scale-95">
-                      Live Sandbox
+                      Launch Prototype
                       <ExternalLink className="h-4 w-4" />
                     </button>
                 </div>

@@ -7,7 +7,7 @@ const About: React.FC = () => {
   return (
     <section id="about" className="py-12 md:py-16 bg-white dark:bg-midnight relative transition-colors duration-300">
       {/* Background animation restricted to the top of this section */}
-      <div className="absolute top-0 left-0 w-full h-[600px] overflow-hidden pointer-events-none opacity-30">
+      <div className="absolute top-0 left-0 w-full h-[600px] overflow-hidden pointer-events-none opacity-30 dark:opacity-50">
         <BackgroundAnimation />
       </div>
 

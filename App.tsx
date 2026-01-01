@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -16,7 +15,7 @@ function App() {
     <div className="min-h-screen bg-brand-light dark:bg-midnight transition-colors duration-500 relative">
       {/* Global Subtle Grid Pattern */}
       <div 
-        className="fixed inset-0 z-0 pointer-events-none opacity-20 dark:opacity-10 animate-pan-grid bg-grid-custom"
+        className="fixed inset-0 z-0 pointer-events-none opacity-20 dark:opacity-25 animate-pan-grid bg-grid-custom"
       ></div>
       
       <div className="relative z-10">

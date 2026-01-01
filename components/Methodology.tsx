@@ -1,6 +1,7 @@
+
 import React from 'react';
 import { METHODOLOGY_STEPS } from '../constants';
-import { Search, Layout, RefreshCw, BarChart2, ChevronRight, RotateCcw } from 'lucide-react';
+import { Search, Layout, RefreshCw, BarChart2, ChevronRight, Quote } from 'lucide-react';
 
 const icons: Record<string, React.ReactNode> = {
   'search': <Search className="h-6 w-6" />,
@@ -11,7 +12,7 @@ const icons: Record<string, React.ReactNode> = {
 
 const Methodology: React.FC = () => {
   return (
-    <section id="methodology" className="py-12 md:py-16 bg-white dark:bg-midnight relative overflow-hidden transition-colors duration-500">
+    <section id="methodology" className="py-16 md:py-24 bg-white dark:bg-midnight relative overflow-hidden transition-colors duration-500">
       {/* Blueprint Grid Accent */}
       <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.07] pointer-events-none bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:32px_32px]"></div>
       
@@ -20,26 +21,18 @@ const Methodology: React.FC = () => {
       <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-6 sm:px-10 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-10 md:mb-14">
+        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
           <h2 className="text-4xl font-black text-slate-900 dark:text-white sm:text-6xl mb-4 tracking-tight leading-none">
             Strategic <span className="rich-gradient-text">Framework.</span>
           </h2>
           <p className="text-base md:text-lg text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
-            I blend engineering rigor with business strategy through a <span className="text-blue-600 dark:text-blue-400 font-bold">continuous iterative engine</span> designed to ensure every delivery aligns with core ROI.
+            I blend engineering rigor with business strategy through a <span className="text-blue-600 dark:text-blue-400 font-bold underline decoration-blue-500/30 decoration-2 underline-offset-4">continuous iterative engine</span> designed to ensure every delivery aligns with core ROI.
           </p>
         </div>
 
-        <div className="relative">
-          {/* Horizontal Connection Path (Desktop) */}
-          <div className="hidden lg:block absolute top-1/2 left-[12.5%] w-[75%] h-0.5 bg-gradient-to-r from-blue-200/50 via-slate-200 dark:via-slate-800 to-indigo-200/50 -translate-y-1/2 z-0"></div>
-
-          {/* Iterative Feedback Loop (Visual connection from 4 back to 1) */}
-          <div className="hidden lg:block absolute -bottom-12 left-[12.5%] w-[75%] h-16 border-b-2 border-x-2 border-dashed border-slate-200 dark:border-slate-800 rounded-b-[4rem] z-0 opacity-50">
-            <div className="absolute left-1/2 -bottom-3 -translate-x-1/2 bg-white dark:bg-midnight px-4 flex items-center gap-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-              <RotateCcw className="h-3 w-3 animate-spin-slow" />
-              Continuous Feedback Loop
-            </div>
-          </div>
+        <div className="relative mb-12 md:mb-16">
+          {/* Main Flow Connection (Desktop) */}
+          <div className="hidden lg:block absolute top-[110px] left-[12.5%] w-[75%] h-px bg-gradient-to-r from-transparent via-blue-200 dark:via-blue-900/50 to-transparent z-0"></div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
             {METHODOLOGY_STEPS.map((step, index) => (
@@ -78,6 +71,46 @@ const Methodology: React.FC = () => {
               </div>
             ))}
           </div>
+
+          {/* New Dynamic Feedback Loop (SVG Path) */}
+          <div className="hidden lg:block absolute -bottom-16 left-0 w-full h-32 z-0 pointer-events-none">
+            <svg width="100%" height="100%" viewBox="0 0 1000 120" fill="none" preserveAspectRatio="none" className="overflow-visible">
+              <path 
+                d="M875 40 C 875 100, 125 100, 125 40" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeDasharray="8 8" 
+                className="text-slate-200 dark:text-slate-800"
+              />
+              <circle r="4" fill="#3b82f6" className="animate-loop-flow">
+                 <animateMotion 
+                    dur="6s" 
+                    repeatCount="indefinite" 
+                    path="M875 40 C 875 100, 125 100, 125 40" 
+                    keyPoints="0;1" 
+                    keyTimes="0;1"
+                 />
+              </circle>
+            </svg>
+          </div>
+        </div>
+
+        {/* Guiding Principle Quote Section - Spacing Reduced */}
+        <div className="max-w-4xl mx-auto mt-16 md:mt-20 pt-12 md:pt-16 border-t border-slate-100 dark:border-slate-800 flex flex-col items-center">
+            <div className="relative text-center w-full">
+                <Quote className="absolute -top-4 -left-6 md:-left-12 h-10 w-10 text-blue-600/10 dark:text-blue-400/10" />
+                <blockquote className="font-display text-2xl md:text-3xl lg:text-5xl font-black text-slate-900 dark:text-white italic tracking-tight leading-tight px-4 md:px-0">
+                    “Deciding <span className="text-blue-600 dark:text-blue-400">what not to do</span> is as important as deciding what to do.”
+                </blockquote>
+                <cite className="mt-8 block not-italic">
+                    <span className="text-xl md:text-2xl font-black text-slate-900 dark:text-white tracking-tight flex items-center justify-center gap-4">
+                        <span className="h-px w-8 bg-slate-200 dark:bg-slate-800"></span>
+                        Steve Jobs
+                        <span className="h-px w-8 bg-slate-200 dark:bg-slate-800"></span>
+                    </span>
+                </cite>
+                <Quote className="absolute -bottom-4 -right-6 md:-right-12 h-10 w-10 text-blue-600/10 dark:text-blue-400/10 rotate-180" />
+            </div>
         </div>
       </div>
       
@@ -87,7 +120,10 @@ const Methodology: React.FC = () => {
           to { transform: rotate(-360deg); }
         }
         .animate-spin-slow {
-          animation: spin-slow 8s linear infinite;
+          animation: spin-slow 12s linear infinite;
+        }
+        .animate-loop-flow {
+          filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.8));
         }
       `}} />
     </section>

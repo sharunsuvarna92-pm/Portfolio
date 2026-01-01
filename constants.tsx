@@ -33,7 +33,7 @@ export const ABOUT_CONTENT = `My professional foundation lies in engineering sys
 
 As a Project Lead at Sclera (JLL Serve), I manage end-to-end delivery for global clients, transforming ambiguous operational challenges into robust, scalable SaaS products. I don't just ship features; I align cross-functional squads to solve real business problems using AI, cloud-native architectures, and data-driven insights.
 
-Whether optimizing logistics algorithms for Intel or streamlining crisis response platforms for Google, my focus remains constant: delivering high-impact digital solutions that drive ROI and user adoption.`;
+Whether digitizing ad-hoc hazardous waste inspections for Intel or building real-time operational platforms for global enterprises, my focus remains consistent: delivering practical, high-impact systems that improve visibility, ensure execution integrity, and drive measurable ROI.`;
 
 export const EXPERIENCE: ExperienceItem[] = [
   {
@@ -85,10 +85,10 @@ export const METHODOLOGY_STEPS: MethodologyStep[] = [
 export const CASE_STUDIES: CaseStudy[] = [
   {
     id: "cs1",
-    title: "IoT-Driven Resource Optimization",
+    title: "Edge-Verified Inspection Optimization",
     client: "Intel",
     role: "Lead Consultant",
-    summary: "Implementing a smart logistics system to optimize resource allocation and reduce operational costs.",
+    summary: "Implementing an NFC-enabled inspection system to verify ad-hoc hazardous waste checks and improve operational oversight.",
     star: {
       situation: "Intel relied on a manual, pen-and-paper process to conduct ad-hoc (unscheduled) inspections of hazardous waste bins across its manufacturing facility. These bins contained chemical and biohazardous waste and were required to be checked multiple times per day across rotating shifts. Because inspections were random and unscheduled, there was no reliable way to verify that checks were actually performed on-site, creating compliance gaps, duplicate entries, and audit risk.",
       task: "Digitize ad-hoc hazardous waste inspections to enforce physical, on-site verification, eliminate falsified reporting, provide real-time visibility across 500+ bins, and ensure audit-ready traceability.",
@@ -115,33 +115,41 @@ export const CASE_STUDIES: CaseStudy[] = [
       { label: "Est. Savings", value: "~$500K", description: "annually" },
       { label: "Audit Readiness", value: "Real-time", description: "historical traceability" }
     ],
-    tags: ["IoT", "Sustainability", "Data Analytics", "Cost Optimization"]
+    tags: ["NFC", "Ad-Hoc Inspection Workflows", "Audit-Ready Operations", "Cost Optimization"]
   },
   {
     id: "cs2",
     title: "Real-Time Incident Response Platform",
     client: "Google",
     role: "Project Lead",
-    summary: "Spearheading the delivery of a centralized command dashboard to improve incident response times.",
+    summary: "Designing a centralized alarm intelligence and incident triage system to reduce alert noise, accelerate resolution, and restore operational visibility across large-scale enterprise campuses.",
     star: {
-      situation: "Critical event management relied on fragmented legacy systems, causing data latency and delayed response times for operations teams.",
-      task: "Develop a centralized, real-time command dashboard to unify data streams and streamline decision-making.",
+      situation: "Facilities operations across multiple Bay Area campuses were generating over 200,000 BMS alarms per month, overwhelming the First Operations Response Team responsible for triage and action. The system produced a high volume of duplicate alerts, lacked root-cause visibility, and had no reliable way to map alarms back to the physical assets causing issues. Field technicians were burdened with reactive tickets, incomplete work order information, and limited access to asset history. Leadership lacked clear KPIs, accountability, and a consolidated view of operational performance.",
+      task: "Design and deliver a centralized alarm intelligence platform that could integrate with existing BMS and ticketing systems, de-duplicate and prioritize alarms, map incidents to originating assets, and create a clear, auditable flow from alert to resolution.",
       action: [
-        "Managed the end-to-end product lifecycle, from stakeholder alignment to UAT.",
-        "Collaborated with engineering to implement WebSocket-based real-time updates.",
-        "Conducted training sessions to ensure smooth adoption by site reliability engineers."
+        "Led end-to-end product delivery for a centralized alarm intelligence module, coordinating across BMS engineers, facilities operations, and IT stakeholders.",
+        "Designed logic to merge and de-duplicate high-volume BMS alarms, map alerts to physical assets, and assign priority based on impact and urgency.",
+        "Integrated the platform with the client’s existing ticketing system via REST APIs to automatically generate structured work orders.",
+        "Enabled field technicians with access to linked asset histories, manuals, geo-location data, and prior incident context to accelerate on-site resolution.",
+        "Built real-time KPI dashboards for leadership to track alarm volume, resolution time, technician throughput, and operational accountability.",
+        "Delivered the solution using Agile sprints, running weekly UATs and feedback loops with facilities and BMS teams to ensure adoption."
       ],
       result: [
-        "Deployed successfully across 30+ global sites, becoming the single source of truth.",
-        "Drastically improved mean-time-to-respond (MTTR) for critical incidents.",
-        "Enhanced operational visibility for remote stakeholder teams."
+        "Reduced alarm resolution time by approximately 80% through intelligent triaging and de-duplication.",
+        "Significantly reduced ticket noise and duplicate alerts across operations teams.",
+        "Restored asset-level visibility from alarm detection through issue resolution.",
+        "Established a single operational visibility layer used daily by response teams and leadership.",
+        "Successfully deployed across 10 Bay Area properties, now scaling to 180+ campuses."
       ]
     },
     metrics: [
-      { label: "Latency", value: "Real-time", description: "Data Sync" },
-      { label: "Scale", value: "30+", description: "Global Sites" }
+      { label: "Alarm Volume", value: "200K+/month", description: "BMS alerts processed" },
+  { label: "Resolution Time", value: "-80%", description: "incident response time" },
+  { label: "Deployment Scale", value: "10 sites", description: "Bay Area campuses" },
+  { label: "Planned Rollout", value: "180+ sites", description: "Enterprise-wide scale" },
+  { label: "Asset Mapping", value: "100%", description: "Alarms linked to source assets" }
     ],
-    tags: ["Crisis Response", "Real-time Data", "Stakeholder Management", "Agile"]
+    tags: [ "Alarm Intelligence","Incident Triage Workflows","Operational Visibility","BMS Integration",]
   },
   {
     id: "cs3",

@@ -11,18 +11,17 @@ const BackgroundAnimation: React.FC = () => {
 
     let animationFrameId: number;
     let particles: any[] = [];
-    let sparkles: any[] = [];
     const mouse = { x: -1000, y: -1000 };
     
-    // Deeper, richer color schemes
+    // Deeper, richer color schemes - Adjusted for better contrast in dark mode
     const colorSchemes = [
-      ['#4f46e5', '#3b82f6', '#0ea5e9', '#6366f1', '#1d4ed8'], // Royal Indigo & Blues
-      ['#a855f7', '#7c3aed', '#6366f1', '#4338ca', '#312e81'], // Deep Purples
-      ['#14b8a6', '#0d9488', '#0f766e', '#2dd4bf', '#5eead4'], // Rich Teals
+      ['#6366f1', '#3b82f6', '#0ea5e9', '#818cf8', '#2563eb'], // Royal Indigo & Blues
+      ['#a855f7', '#8b5cf6', '#6366f1', '#4f46e5', '#4338ca'], // Deep Purples
+      ['#2dd4bf', '#14b8a6', '#0d9488', '#5eead4', '#99f6e4'], // Rich Teals
     ];
     let currentColorScheme = Math.floor(Math.random() * colorSchemes.length);
-    const speedMultiplier = 0.45; // Slower for "richer" feel
-    const connectionDistance = 180;
+    const speedMultiplier = 0.4; // Slower for "richer" feel
+    const connectionDistance = 200;
 
     const resizeCanvas = () => {
       const parent = canvas.parentElement;
@@ -43,7 +42,8 @@ const BackgroundAnimation: React.FC = () => {
 
     const createParticles = () => {
       particles = [];
-      const particleCount = Math.min(60, Math.floor((canvas.width * canvas.height) / 30000));
+      const isDark = document.documentElement.classList.contains('dark');
+      const particleCount = Math.min(60, Math.floor((canvas.width * canvas.height) / 28000));
       
       for (let i = 0; i < particleCount; i++) {
         const vx = (Math.random() - 0.5) * 0.8;
@@ -53,9 +53,10 @@ const BackgroundAnimation: React.FC = () => {
           y: Math.random() * canvas.height,
           vx: vx,
           vy: vy,
-          size: Math.random() * 2 + 1,
+          size: Math.random() * 2 + 1.2,
           color: getRandomColor(),
-          opacity: Math.random() * 0.4 + 0.3, 
+          // Slightly higher opacity for dark mode
+          opacity: isDark ? Math.random() * 0.5 + 0.4 : Math.random() * 0.4 + 0.3, 
           originalVx: vx,
           originalVy: vy,
           pulse: Math.random() * Math.PI * 2
@@ -63,22 +64,11 @@ const BackgroundAnimation: React.FC = () => {
       }
     };
 
-    const createSparkle = () => {
-      if (sparkles.length < 10) {
-        sparkles.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          size: Math.random() * 1.5 + 0.5,
-          opacity: 0.8,
-          decay: Math.random() * 0.003 + 0.002
-        });
-      }
-    };
-
     const updateParticles = () => {
       particles.forEach(p => {
-        const dx = (mouse.x - canvas.getBoundingClientRect().left) - p.x;
-        const dy = (mouse.y - canvas.getBoundingClientRect().top) - p.y;
+        const rect = canvas.getBoundingClientRect();
+        const dx = (mouse.x - rect.left) - p.x;
+        const dy = (mouse.y - rect.top) - p.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
         const maxDistance = 300;
 
@@ -100,13 +90,14 @@ const BackgroundAnimation: React.FC = () => {
         if (p.y < 0) p.y = canvas.height;
         if (p.y > canvas.height) p.y = 0;
 
-        p.pulse += 0.02;
-        p.currentSize = p.size + Math.sin(p.pulse) * 0.5;
+        p.pulse += 0.025;
+        p.currentSize = p.size + Math.sin(p.pulse) * 0.6;
       });
     };
 
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const isDark = document.documentElement.classList.contains('dark');
       
       // Connections
       for (let i = 0; i < particles.length; i++) {
@@ -118,11 +109,13 @@ const BackgroundAnimation: React.FC = () => {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < connectionDistance) {
-            const opacity = (connectionDistance - dist) / connectionDistance * 0.25;
+            // Increased connection opacity for dark mode
+            const opacityMultiplier = isDark ? 0.45 : 0.3;
+            const opacity = (connectionDistance - dist) / connectionDistance * opacityMultiplier;
             ctx.save();
             ctx.globalAlpha = opacity;
             ctx.strokeStyle = p1.color;
-            ctx.lineWidth = 1;
+            ctx.lineWidth = 1.2;
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
@@ -137,8 +130,11 @@ const BackgroundAnimation: React.FC = () => {
         ctx.save();
         ctx.globalAlpha = p.opacity;
         ctx.fillStyle = p.color;
-        ctx.shadowBlur = 15;
+        
+        // Intensified glow for dark mode
+        ctx.shadowBlur = isDark ? 20 : 12;
         ctx.shadowColor = p.color;
+        
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.currentSize || p.size, 0, Math.PI * 2);
         ctx.fill();
