@@ -149,33 +149,47 @@ export const CASE_STUDIES: CaseStudy[] = [
   { label: "Planned Rollout", value: "180+ sites", description: "Enterprise-wide scale" },
   { label: "Asset Mapping", value: "100%", description: "Alarms linked to source assets" }
     ],
-    tags: [ "Alarm Intelligence","Incident Triage Workflows","Operational Visibility","BMS Integration",]
+    tags: [ "Alarm Intelligence","Incident Triage Workflows","Operational Visibility","BMS Integration"]
   },
   {
     id: "cs3",
     title: "Enterprise Operations Intelligence",
     client: "Procter & Gamble",
     role: "Solution Lead",
-    summary: "Scaling a unified 'Single Pane of Glass' SaaS platform to centralize analytics across multiple regions.",
+    summary: "Building a centralized operations intelligence platform that unified BMS, sensor data, and alarms into a single, real-time control layer for regional engineering and facilities teams.",
     star: {
-      situation: "Disparate monitoring tools across regions prevented standardized performance benchmarking and data-driven decision making.",
-      task: "Scale the Intelligent Operations Center (IOC) solution to unify operational data across North and Latin America.",
+      situation: "Following the successful rollout of a facilities management platform for field teams, Procter & Gamble initiated Phase 2 to integrate BMS and sensor systems across sites. While the vision was to create a single operational view, regional engineering and controls teams were still operating in highly fragmented workflows. Critical alerts were received through emails or disparate BMS platforms, requiring engineers to log into multiple systems to diagnose issues and then manually raise work orders. The lack of central visibility led to alert fatigue, slow response times, and limited insight into historical performance across regions.",
+      task: "Design and deliver a centralized alarm monitoring and operations intelligence dashboard that could aggregate real-time alarms from multiple BMS and sensor systems, enable contextual work order creation, support remote diagnostics, and provide historical trend analysis across devices, zones, and sites.",
       action: [
-        "Directed solution prototyping to demonstrate value proposition to regional leadership.",
-        "Managed the rollout across complex brownfield environments with legacy system integrations.",
-        "Defined the KPI framework to measure efficiency gains pre- and post-deployment."
+        "Led the design and rollout of a centralized alarm monitoring dashboard for regional engineering and controls teams across North America.",
+        "Integrated multiple BMS and sensor systems to surface real-time alarms and device-level data in a single operational interface.",
+        "Enabled engineers to raise contextual work orders directly from alarms without switching tools.",
+        "Provided secure remote access to BMS systems for diagnostics and troubleshooting.",
+        "Identified and addressed alert fatigue by enabling suppression and management of noisy alarms, eliminating over 60% false alerts.",
+        "Built a self-serve configuration interface allowing teams to create and manage custom alarm rules without BMS vendor dependency.",
+        "Expanded the platform beyond BMS to include inspection alerts, audit non-compliance, and service failures, delivering holistic operational visibility.",
+        "Scaled the solution from North America to Latin America and Europe for regional FM leadership."
       ],
       result: [
-        "Achieved a 40% gain in triage efficiency through centralized monitoring.",
-        "Realized $600k in indirect savings through operational optimization.",
-        "Standardized operational workflows across diverse geographies."
+        "Reduced alert fatigue by eliminating over 60% of false and noisy alarms.",
+        "Accelerated issue resolution through centralized alarm visibility and contextual work order creation.",
+        "Enabled regional engineering teams to manage operations remotely with real-time and historical insights.",
+        "Eliminated dependency on BMS vendors for custom alarm configuration through self-serve controls.",
+        "Expanded adoption from a field-focused tool into a mission-critical operations platform for global FM leadership.",
       ]
     },
     metrics: [
-      { label: "Efficiency", value: "40%", description: "Triage Improvement" },
-      { label: "Savings", value: "$600k", description: "Indirect Value" }
+       { label: "False Alarms", value: "-60%", description: "Noise reduction" },
+  { label: "Monitoring Scope", value: "Multi-Region", description: "NA, LATAM, Europe" },
+  { label: "System Coverage", value: "BMS + Sensors", description: "Integrated platforms" },
+  { label: "Configuration Model", value: "Self-Serve", description: "Custom alarm rules" },
+  { label: "Operational Role", value: "Mission-Critical", description: "Regional FM leadership" }
     ],
-    tags: ["Scaling", "System Integration", "Standardization", "ROI"]
+    tags: ["Operations Intelligence",
+  "Alarm Monitoring Systems",
+  "BMS & Sensor Integration",
+  "Alert Fatigue Reduction",
+  "Enterprise FM Platforms"]
   },
   {
     id: "cs4",

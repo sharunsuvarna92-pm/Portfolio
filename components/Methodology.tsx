@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { METHODOLOGY_STEPS } from '../constants';
 import { Search, Layout, RefreshCw, BarChart2, ChevronRight, Quote } from 'lucide-react';
@@ -23,7 +22,7 @@ const Methodology: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 sm:px-10 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
           <h2 className="text-4xl font-black text-slate-900 dark:text-white sm:text-6xl mb-4 tracking-tight leading-none">
-            Strategic <span className="rich-gradient-text">Framework.</span>
+            Execution <span className="rich-gradient-text">Framework.</span>
           </h2>
           <p className="text-base md:text-lg text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
             I blend engineering rigor with business strategy through a <span className="text-blue-600 dark:text-blue-400 font-bold underline decoration-blue-500/30 decoration-2 underline-offset-4">continuous iterative engine</span> designed to ensure every delivery aligns with core ROI.

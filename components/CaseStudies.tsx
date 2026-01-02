@@ -38,7 +38,7 @@ const CaseStudies: React.FC = () => {
         <div className="mb-10 md:mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="max-w-3xl">
             <h2 className="text-4xl font-black text-slate-900 dark:text-white sm:text-6xl mb-4 tracking-tight leading-none">
-              Strategic <span className="rich-gradient-text">Deliveries.</span>
+              Key <span className="rich-gradient-text">Deliveries.</span>
             </h2>
             <p className="text-base md:text-lg text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
               Bridging operations and technology through meticulous product lifecycle management.
