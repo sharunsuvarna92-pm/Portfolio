@@ -3,7 +3,6 @@ import {
   Layers, 
   CheckCircle, 
   User, 
-  /* Added Users to fix 'Cannot find name Users' error */
   Users,
   Cpu, 
   ExternalLink, 
@@ -30,20 +29,24 @@ import {
   AlertTriangle,
   Layout,
   Clock,
-  /* Added RefreshCw to fix 'Cannot find name RefreshCw' error */
   RefreshCw
 } from 'lucide-react';
 
 const Projects: React.FC = () => {
-  const [showSpec, setShowSpec] = useState(false);
+  const [showSpec] = useState(false);
+  const [showSpecModal, setShowSpecModal] = useState(false);
 
   useEffect(() => {
-    if (showSpec) {
+    if (showSpecModal) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
     }
-  }, [showSpec]);
+  }, [showSpecModal]);
+
+  const handleLaunchPrototype = () => {
+    window.open('https://sched-iq.vercel.app/', '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <section id="projects" className="py-16 md:py-24 bg-slate-50 dark:bg-slate-950 relative transition-colors duration-300 border-t border-slate-200 dark:border-blue-900/10">
@@ -68,7 +71,7 @@ const Projects: React.FC = () => {
 
         <div className="space-y-12">
           <div className="bg-white dark:bg-midnight rounded-[2.5rem] border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden group hover:border-blue-500/30 transition-all duration-500">
-            <div className="bg-slate-50 dark:bg-slate-900/50 px-8 py-8 border-b border-slate-200 dark:border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div className="bg-slate-50 dark:bg-slate-900/50 px-6 py-8 md:px-8 md:py-8 border-b border-slate-200 dark:border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-6">
               <div className="flex items-center gap-5 max-w-2xl">
                 <div className="h-14 w-14 rounded-2xl bg-blue-600 flex items-center justify-center shrink-0 shadow-lg shadow-blue-600/20 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
@@ -89,7 +92,7 @@ const Projects: React.FC = () => {
               </div>
             </div>
 
-            <div className="p-8 md:p-10">
+            <div className="p-6 md:p-10">
               <div className="grid lg:grid-cols-12 gap-10">
                 <div className="lg:col-span-8 space-y-8">
                   <div>
@@ -112,7 +115,7 @@ const Projects: React.FC = () => {
                 </div>
 
                 <div className="lg:col-span-4">
-                  <div className="bg-slate-950 p-8 rounded-[2rem] border border-white/5 shadow-2xl relative overflow-hidden ring-1 ring-white/10">
+                  <div className="bg-slate-950 p-6 md:p-8 rounded-[2rem] border border-white/5 shadow-2xl relative overflow-hidden ring-1 ring-white/10">
                     <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-6">Operational Value</h4>
                     <ul className="space-y-4 text-xs text-slate-300">
                       {["Forces reality into planning.", "Surfaces delivery bottlenecks early.", "Explains trade-offs clearly.", "Data-backed decision making."].map(item => (
@@ -126,10 +129,10 @@ const Projects: React.FC = () => {
                 </div>
               </div>
 
-              {/* Action Bar */}
-              <div className="mt-10 pt-8 border-t border-slate-100 dark:border-slate-800 flex flex-col lg:flex-row items-center justify-between gap-6">
-                <div className="flex items-center gap-4">
-                  <div className="p-3 bg-blue-600 rounded-2xl text-white shadow-xl shadow-blue-600/20">
+              {/* Action Bar - Fixed Mobile Overhang */}
+              <div className="mt-10 pt-8 border-t border-slate-100 dark:border-slate-800 flex flex-col lg:flex-row items-center justify-between gap-8">
+                <div className="flex items-center gap-4 w-full lg:w-auto">
+                  <div className="p-3 bg-blue-600 rounded-2xl text-white shadow-xl shadow-blue-600/20 shrink-0">
                     <Layers className="h-5 w-5" />
                   </div>
                   <div className="max-w-md">
@@ -138,15 +141,18 @@ const Projects: React.FC = () => {
                   </div>
                 </div>
                 
-                <div className="flex gap-4 w-full lg:w-auto">
+                <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
                     <button 
-                      onClick={() => setShowSpec(true)}
-                      className="flex-1 lg:flex-none px-8 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-950 rounded-2xl font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-3 transition-all hover:scale-105 active:scale-95 shadow-lg"
+                      onClick={() => setShowSpecModal(true)}
+                      className="flex-1 lg:flex-none px-6 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-950 rounded-2xl font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-3 transition-all hover:scale-[1.02] active:scale-95 shadow-lg whitespace-nowrap"
                     >
                       Technical Spec
                       <Code2 className="h-4 w-4" />
                     </button>
-                    <button className="flex-1 lg:flex-none px-8 py-3 bg-blue-600 text-white rounded-2xl font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-3 transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] active:scale-95">
+                    <button 
+                      onClick={handleLaunchPrototype}
+                      className="flex-1 lg:flex-none px-6 py-4 bg-blue-600 text-white rounded-2xl font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-3 transition-all hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] active:scale-95 shadow-lg whitespace-nowrap"
+                    >
                       Launch Prototype
                       <ExternalLink className="h-4 w-4" />
                     </button>
@@ -158,36 +164,36 @@ const Projects: React.FC = () => {
       </div>
 
       {/* Technical Spec Modal */}
-      {showSpec && (
+      {showSpecModal && (
         <div className="fixed inset-0 z-[110] flex items-center justify-center p-0 md:p-4 lg:p-8">
-          <div className="absolute inset-0 bg-slate-950/98 backdrop-blur-xl" onClick={() => setShowSpec(false)}></div>
+          <div className="absolute inset-0 bg-slate-950/98 backdrop-blur-xl" onClick={() => setShowSpecModal(false)}></div>
           
           <div className="bg-white dark:bg-[#0a0f1c] w-full max-w-[1400px] h-full md:h-auto md:max-h-[92vh] md:rounded-[2.5rem] shadow-2xl relative z-10 overflow-hidden flex flex-col border border-slate-200 dark:border-white/10 animate-fade-in-up">
             
             {/* Modal Header */}
-            <div className="px-8 py-6 border-b border-slate-100 dark:border-white/5 flex items-center justify-between sticky top-0 bg-white/90 dark:bg-[#0a0f1c]/90 backdrop-blur-md z-20">
+            <div className="px-6 md:px-8 py-6 border-b border-slate-100 dark:border-white/5 flex items-center justify-between sticky top-0 bg-white/90 dark:bg-[#0a0f1c]/90 backdrop-blur-md z-20">
               <div className="flex items-center gap-5">
-                <div className="h-12 w-12 rounded-xl bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-600/20">
+                <div className="h-12 w-12 rounded-xl bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-600/20 shrink-0">
                   <Activity className="h-6 w-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-black text-slate-900 dark:text-white tracking-tight uppercase">SchedIQ Technical Blueprint</h3>
+                  <h3 className="text-lg md:text-xl font-black text-slate-900 dark:text-white tracking-tight uppercase">SchedIQ Technical Blueprint</h3>
                   <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Internal Build // Engineering Documentation</p>
                 </div>
               </div>
-              <button onClick={() => setShowSpec(false)} className="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-xl transition-colors">
+              <button onClick={() => setShowSpecModal(false)} className="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-xl transition-colors">
                 <X className="h-6 w-6 text-slate-400" />
               </button>
             </div>
 
             {/* Modal Content */}
-            <div className="flex-grow overflow-y-auto p-8 md:p-14 lg:p-16 custom-scrollbar space-y-20">
+            <div className="flex-grow overflow-y-auto p-6 md:p-14 lg:p-16 custom-scrollbar space-y-20">
               
               {/* Introduction & Origin Section */}
               <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
                 <div className="lg:col-span-7 space-y-8">
                   <div className="space-y-4">
-                    <h1 className="text-5xl lg:text-7xl font-black text-slate-900 dark:text-white tracking-tight leading-[0.9]">SchedIQ</h1>
+                    <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-slate-900 dark:text-white tracking-tight leading-[0.9]">SchedIQ</h1>
                     <p className="text-lg lg:text-xl font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest">Deterministic Resource Planning & Task Scheduling Engine</p>
                   </div>
                   
@@ -199,14 +205,14 @@ const Projects: React.FC = () => {
                     <div className="space-y-4 text-slate-500 dark:text-slate-400 leading-relaxed font-medium text-lg">
                       <p>SchedIQ started from a very familiar frustration.</p>
                       <p>In fast-paced product environments, teams work across multiple modules, individuals juggle overlapping responsibilities, and roadmaps are constantly reshaped by user feedback and high-priority requests. On paper, plans look solid. In reality, priorities shift, capacity gets stretched, and dependencies surface too late.</p>
-                      <p>As a project and delivery lead, I kept seeing plans fail not because teams couldn’t execute—but because the planning systems allowed <span className="text-blue-600 font-bold">optimistic commitments</span> without validating feasibility.</p>
+                      <p>As a project and delivery lead, I kept seeing plans fail not because teams couldn’t execute—but because the planning systems allowed <span className="text-blue-600 font-black">optimistic commitments</span> without validating feasibility.</p>
                       <p>SchedIQ is my attempt to fix that. Not with better reporting, but by forcing reality into the planning conversation before commitments are made.</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="lg:col-span-5">
-                  <div className="bg-slate-50 dark:bg-midnight p-10 rounded-[2.5rem] border border-slate-100 dark:border-white/5 shadow-inner sticky top-0">
+                  <div className="bg-slate-50 dark:bg-midnight p-8 md:p-10 rounded-[2.5rem] border border-slate-100 dark:border-white/5 shadow-inner">
                     <h5 className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest mb-8 flex items-center gap-2">
                       <Monitor className="h-4 w-4 text-blue-600" />
                       The Reality SchedIQ Is Designed For
@@ -235,24 +241,24 @@ const Projects: React.FC = () => {
               </div>
 
               {/* What SchedIQ Is / Is Not Section */}
-              <div className="bg-slate-900 p-12 lg:p-20 rounded-[3.5rem] text-white relative overflow-hidden ring-1 ring-white/10">
+              <div className="bg-slate-900 p-8 md:p-12 lg:p-20 rounded-[2.5rem] md:rounded-[3.5rem] text-white relative overflow-hidden ring-1 ring-white/10">
                 <div className="absolute top-0 right-0 p-12 opacity-5 pointer-events-none">
                   <Activity className="h-64 w-64" />
                 </div>
                 <div className="relative z-10 max-w-5xl">
-                   <h2 className="text-4xl lg:text-5xl font-black mb-8 tracking-tight">What SchedIQ Is <span className="text-slate-500">(and Is Not)</span></h2>
-                   <p className="text-xl lg:text-2xl text-slate-300 font-medium mb-12 max-w-3xl leading-relaxed">
+                   <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-8 tracking-tight">What SchedIQ Is <span className="text-slate-500">(and Is Not)</span></h2>
+                   <p className="text-lg lg:text-2xl text-slate-300 font-medium mb-12 max-w-3xl leading-relaxed">
                      SchedIQ is <span className="text-white font-bold">not a task tracker</span>. It doesn’t ask what you want to do. It helps you understand what you can do—realistically and explainably.
                    </p>
                    
-                   <div className="grid md:grid-cols-3 gap-8">
+                   <div className="grid md:grid-cols-3 gap-6 md:gap-8">
                      {[
                        { q: "Can this task be delivered by the requested date?", a: "Deterministic Check" },
                        { q: "If yes, what does the execution plan look like?", a: "Visual Roadmap" },
                        { q: "If no, what exactly is blocking it, and what needs to change?", a: "Blocker Analysis" }
                      ].map((item, idx) => (
-                       <div key={idx} className="bg-white/5 p-8 rounded-3xl border border-white/10 backdrop-blur-sm group hover:bg-white/10 transition-all">
-                          <p className="text-lg font-bold mb-6 leading-tight">{item.q}</p>
+                       <div key={idx} className="bg-white/5 p-6 md:p-8 rounded-3xl border border-white/10 backdrop-blur-sm group hover:bg-white/10 transition-all">
+                          <p className="text-base md:text-lg font-bold mb-6 leading-tight">{item.q}</p>
                           <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-blue-400">
                              <Zap className="h-3 w-3" />
                              {item.a}
@@ -260,33 +266,33 @@ const Projects: React.FC = () => {
                        </div>
                      ))}
                    </div>
-                   <p className="mt-12 text-slate-500 font-bold uppercase tracking-[0.2em] text-xs">Every answer is grounded in deterministic logic, not assumptions.</p>
+                   <p className="mt-12 text-slate-500 font-bold uppercase tracking-[0.2em] text-[10px] md:text-xs">Every answer is grounded in deterministic logic, not assumptions.</p>
                 </div>
               </div>
 
               {/* How It Works - Detailed Steps */}
               <div className="space-y-16">
                  <div className="flex items-center gap-6">
-                    <h2 className="text-4xl font-black text-slate-900 dark:text-white tracking-tight whitespace-nowrap">How It Works</h2>
+                    <h2 className="text-3xl md:text-4xl font-black text-slate-900 dark:text-white tracking-tight whitespace-nowrap">How It Works</h2>
                     <div className="h-px flex-grow bg-slate-100 dark:bg-white/5"></div>
                  </div>
 
-                 <div className="grid md:grid-cols-2 gap-10">
+                 <div className="grid md:grid-cols-2 gap-8 md:gap-10">
                     {[
                       { 
                         title: "1. Planning Without Commitment", 
                         icon: <Layout className="h-6 w-6" />,
-                        content: "Tasks are first created in a planning state. No capacity is consumed, no assignments are locked, and scenarios can be explored safely. Planning should be cheap; commitment should be deliberate." 
+                        content: "Tasks are first created in a planning state. At this stage, no capacity is consumed, no assignments are locked, and scenarios can be explored safely. Planning should be cheap; commitment should be deliberate." 
                       },
                       { 
                         title: "2. Deterministic Feasibility Analysis", 
                         icon: <Activity className="h-6 w-6" />,
-                        content: "The system simulates execution by respecting real working hours, considering committed work, enforcing ownership rules, and forwarding dependencies to determine if a feasible schedule exists." 
+                        content: "The engine simulates execution by respecting real working hours, only considering already committed work, enforcing ownership rules (primary/secondary), and honoring cross-team dependencies." 
                       },
                       { 
                         title: "3. Explainable Outcomes", 
                         icon: <MessageSquare className="h-6 w-6" />,
-                        content: "Returns a realistic execution window if feasible. If not, it explains exactly who or what is the bottleneck and suggests trade-offs like reprioritization or timeline adjustments." 
+                        content: "Returns a realistic execution window if feasible. If not, it explains exactly who/what is blocking it and what should change—reprioritization or timeline shifts." 
                       },
                       { 
                         title: "4. Explicit Commitment", 
@@ -294,13 +300,13 @@ const Projects: React.FC = () => {
                         content: "Only after confirmation does a task move to committed. At that point, assignments become capacity-blocking and delivery discipline is enforced automatically across future plans." 
                       }
                     ].map((step, idx) => (
-                      <div key={idx} className="bg-slate-50 dark:bg-white/5 p-10 rounded-[2.5rem] border border-slate-100 dark:border-white/5 flex gap-8 group">
+                      <div key={idx} className="bg-slate-50 dark:bg-white/5 p-8 md:p-10 rounded-[2rem] border border-slate-100 dark:border-white/5 flex flex-col sm:flex-row gap-8 group">
                          <div className="h-14 w-14 rounded-2xl bg-white dark:bg-slate-900 flex items-center justify-center shrink-0 shadow-sm border border-slate-100 dark:border-white/10 group-hover:scale-110 transition-transform">
                             <span className="text-blue-600 dark:text-blue-400">{step.icon}</span>
                          </div>
                          <div className="space-y-4">
                             <h3 className="text-xl font-black text-slate-900 dark:text-white tracking-tight">{step.title}</h3>
-                            <p className="text-slate-500 dark:text-slate-400 leading-relaxed font-medium">{step.content}</p>
+                            <p className="text-sm md:text-base text-slate-500 dark:text-slate-400 leading-relaxed font-medium">{step.content}</p>
                          </div>
                       </div>
                     ))}
@@ -329,7 +335,7 @@ const Projects: React.FC = () => {
                     </div>
                  </div>
 
-                 <div className="lg:col-span-7 bg-blue-50/30 dark:bg-blue-900/10 p-12 rounded-[3rem] border border-blue-100/30 dark:border-blue-900/20 relative overflow-hidden">
+                 <div className="lg:col-span-7 bg-blue-50/30 dark:bg-blue-900/10 p-8 md:p-12 rounded-[2.5rem] md:rounded-[3rem] border border-blue-100/30 dark:border-blue-900/20 relative overflow-hidden">
                     <div className="absolute top-0 right-0 p-12 opacity-5 pointer-events-none">
                       <User className="h-32 w-32 text-blue-600" />
                     </div>
@@ -338,13 +344,13 @@ const Projects: React.FC = () => {
                        <p className="text-lg text-slate-600 dark:text-slate-400 font-medium leading-relaxed">
                          SchedIQ is something I designed and built end-to-end. This wasn't built as a demo—it was built as a thinking tool I genuinely wished I had while planning real projects.
                        </p>
-                       <div className="grid grid-cols-2 gap-4">
+                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                          {[
                            "Problem Framing", "Ownership Modeling", "Dependency Logic", "Lifecycle & State Rules", "Backend Decision Engine", "API Architecture"
                          ].map(item => (
                            <div key={item} className="bg-white dark:bg-slate-900 p-4 rounded-xl flex items-center gap-3 border border-blue-100 dark:border-white/5">
                               <CheckCircle className="h-4 w-4 text-emerald-500 shrink-0" />
-                              <span className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-widest">{item}</span>
+                              <span className="text-[10px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-widest">{item}</span>
                            </div>
                          ))}
                        </div>
@@ -359,15 +365,15 @@ const Projects: React.FC = () => {
                        <BrainCircuit className="h-5 w-5" />
                        <span className="text-[10px] font-black uppercase tracking-widest">Build Methodology</span>
                     </div>
-                    <h2 className="text-4xl font-black text-slate-900 dark:text-white tracking-tight">Force Multiplication via AI</h2>
-                    <div className="space-y-4 text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
-                      <p>I don’t come from a traditional coding background, and I didn’t build SchedIQ by writing everything from scratch line by line.</p>
-                      <p>Instead, I used AI as a force multiplier—to translate system thinking into working software. What mattered most wasn’t syntax—it was <span className="text-slate-900 dark:text-white font-black">clarity of thought</span>.</p>
+                    <h2 className="text-3xl md:text-4xl font-black text-slate-900 dark:text-white tracking-tight">Force Multiplication via AI</h2>
+                    <div className="space-y-4 text-slate-500 dark:text-slate-400 leading-relaxed font-medium text-lg">
+                      <p>I don’t come from a traditional coding background, and I used AI as a force multiplier to translate system thinking into working software.</p>
+                      <p>AI helped me turn product and delivery problems into concrete system designs, explore edge cases faster, and iterate on backend code based on clearly defined rules.</p>
                       <ul className="space-y-4 pt-4">
                         {[
+                          "Defining strict constraints & ownership rules",
                           "Translating product problems into system designs",
-                          "Exploring scheduling logic & edge cases quickly",
-                          "Iterating on backend code based on strict rules",
+                          "Exploring complex scheduling logic & heuristics",
                           "Simulating 'what breaks if this changes?' scenarios"
                         ].map((point, idx) => (
                           <li key={idx} className="flex gap-4 items-start">
@@ -379,11 +385,11 @@ const Projects: React.FC = () => {
                     </div>
                  </div>
 
-                 <div className="bg-slate-950 p-12 rounded-[3.5rem] border border-white/5 shadow-2xl relative overflow-hidden group">
+                 <div className="bg-slate-950 p-10 md:p-12 rounded-[2.5rem] md:rounded-[3.5rem] border border-white/5 shadow-2xl relative overflow-hidden group">
                     <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_0%,rgba(59,130,246,0.1),transparent_70%)]"></div>
                     <div className="relative z-10 space-y-6">
                        <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-6">Internal Reflection</h4>
-                       <p className="text-xl lg:text-2xl text-slate-300 font-medium italic leading-relaxed">
+                       <p className="text-lg md:text-2xl text-slate-300 font-medium italic leading-relaxed">
                          "SchedIQ works not because the code is clever, but because the rules are explicit, the constraints are real, and the system refuses to lie about feasibility."
                        </p>
                        <div className="pt-6 flex items-center gap-4">
@@ -395,8 +401,8 @@ const Projects: React.FC = () => {
               </div>
 
               {/* Tech Stack & Closing */}
-              <div className="grid lg:grid-cols-3 gap-10">
-                 <div className="bg-slate-50 dark:bg-midnight p-10 rounded-3xl border border-slate-100 dark:border-white/5 space-y-8">
+              <div className="grid lg:grid-cols-3 gap-8 md:gap-10">
+                 <div className="bg-slate-50 dark:bg-midnight p-8 md:p-10 rounded-3xl border border-slate-100 dark:border-white/5 space-y-8">
                     <h5 className="text-xs font-black text-slate-900 dark:text-white uppercase tracking-widest flex items-center gap-3">
                        <Settings className="h-4 w-4 text-blue-600" />
                        Tech Stack
@@ -413,7 +419,7 @@ const Projects: React.FC = () => {
                     </div>
                  </div>
 
-                 <div className="bg-slate-50 dark:bg-midnight p-10 rounded-3xl border border-slate-100 dark:border-white/5 space-y-8">
+                 <div className="bg-slate-50 dark:bg-midnight p-8 md:p-10 rounded-3xl border border-slate-100 dark:border-white/5 space-y-8">
                     <h5 className="text-xs font-black text-slate-900 dark:text-white uppercase tracking-widest flex items-center gap-3">
                        <History className="h-4 w-4 text-blue-600" />
                        What It Taught Me
@@ -423,7 +429,7 @@ const Projects: React.FC = () => {
                     </p>
                  </div>
 
-                 <div className="bg-slate-50 dark:bg-midnight p-10 rounded-3xl border border-slate-100 dark:border-white/5 space-y-8">
+                 <div className="bg-slate-50 dark:bg-midnight p-8 md:p-10 rounded-3xl border border-slate-100 dark:border-white/5 space-y-8">
                     <h5 className="text-xs font-black text-slate-900 dark:text-white uppercase tracking-widest flex items-center gap-3">
                        <Zap className="h-4 w-4 text-amber-500" />
                        What's Next
@@ -442,20 +448,20 @@ const Projects: React.FC = () => {
             </div>
 
             {/* Modal Footer */}
-            <div className="px-8 py-6 border-t border-slate-100 dark:border-white/5 bg-slate-50 dark:bg-[#0a0f1c] flex flex-col md:flex-row items-center justify-between gap-6 sticky bottom-0 z-20">
+            <div className="px-6 md:px-8 py-6 border-t border-slate-100 dark:border-white/5 bg-slate-50 dark:bg-[#0a0f1c] flex flex-col md:flex-row items-center justify-between gap-6 sticky bottom-0 z-20">
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-3">
                    <ShieldCheck className="h-5 w-5 text-emerald-500" />
                    <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Commitments should be earned, not assumed</span>
                 </div>
-                <div className="h-4 w-px bg-slate-200 dark:bg-white/10"></div>
+                <div className="h-4 w-px bg-slate-200 dark:bg-white/10 hidden md:block"></div>
                 <div className="flex items-center gap-2">
                    <Clock className="h-4 w-4 text-blue-500" />
                    <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Refined Version 2.1.0</span>
                 </div>
               </div>
               <button 
-                onClick={() => setShowSpec(false)}
+                onClick={() => setShowSpecModal(false)}
                 className="w-full md:w-auto px-12 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-2xl transition-all hover:scale-105 active:scale-95"
               >
                 Close Documentation
