@@ -1,12 +1,14 @@
-import React from 'react';
+
+import React, { useState } from 'react';
 import { ABOUT_CONTENT, PROFILE, EXPERIENCE } from '../constants';
-import { Briefcase } from 'lucide-react';
+import { Briefcase, ChevronDown, ChevronUp } from 'lucide-react';
 import BackgroundAnimation from './BackgroundAnimation';
 
 const About: React.FC = () => {
+  const [showFullTimeline, setShowFullTimeline] = useState(false);
+
   return (
     <section id="about" className="py-12 md:py-16 bg-white dark:bg-midnight relative transition-colors duration-300">
-      {/* Background animation restricted to the top of this section */}
       <div className="absolute top-0 left-0 w-full h-[600px] overflow-hidden pointer-events-none opacity-30 dark:opacity-50">
         <BackgroundAnimation />
       </div>
@@ -53,7 +55,6 @@ const About: React.FC = () => {
           </div>
         </div>
 
-        {/* Alternating Professional Timeline */}
         <div className="mt-16 md:mt-24">
             <div className="flex items-center justify-center gap-3 mb-12">
                 <div className="p-2 bg-blue-50 dark:bg-blue-900/40 text-blue-600 dark:text-blue-300 rounded-xl">
@@ -65,12 +66,14 @@ const About: React.FC = () => {
             <div className="relative max-w-5xl mx-auto px-4 sm:px-0">
                 <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px border-l-2 border-dashed border-slate-200 dark:border-slate-800 -translate-x-1/2" />
 
-                <div className="space-y-16 md:space-y-24">
+                <div className="space-y-12 md:space-y-24">
                     {EXPERIENCE.map((exp, index) => {
                         const isEven = index % 2 === 0;
+                        // On mobile, hide items after the first one unless showFullTimeline is true
+                        const isMobileHidden = !showFullTimeline && index > 0;
 
                         return (
-                            <div key={index} className="relative flex flex-col md:flex-row items-center justify-between">
+                            <div key={index} className={`relative flex flex-col md:flex-row items-center justify-between transition-all duration-500 ${isMobileHidden ? 'hidden md:flex' : 'flex'}`}>
                                 <div className="absolute left-4 md:left-1/2 top-0 md:top-6 -translate-x-1/2 z-20">
                                     <div className="w-6 h-6 rounded-full bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 flex items-center justify-center shadow-lg group">
                                         <div className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
@@ -121,6 +124,20 @@ const About: React.FC = () => {
                             </div>
                         )
                     })}
+                </div>
+
+                {/* Mobile Toggle Button */}
+                <div className="mt-12 flex justify-center md:hidden">
+                    <button 
+                        onClick={() => setShowFullTimeline(!showFullTimeline)}
+                        className="group flex items-center gap-3 px-6 py-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-xs font-bold uppercase tracking-[0.2em] text-blue-600 dark:text-blue-400 shadow-sm active:scale-95 transition-all"
+                    >
+                        {showFullTimeline ? (
+                            <>Collapse Journey <ChevronUp className="h-4 w-4" /></>
+                        ) : (
+                            <>View Professional History <ChevronDown className="h-4 w-4" /></>
+                        )}
+                    </button>
                 </div>
             </div>
         </div>
