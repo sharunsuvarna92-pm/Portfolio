@@ -29,23 +29,29 @@ import {
   AlertTriangle,
   Layout,
   Clock,
-  RefreshCw
+  RefreshCw,
+  Calendar,
+  Eye
 } from 'lucide-react';
 
 const Projects: React.FC = () => {
-  const [showSpec] = useState(false);
   const [showSpecModal, setShowSpecModal] = useState(false);
+  const [showDaySpentModal, setShowDaySpentModal] = useState(false);
 
   useEffect(() => {
-    if (showSpecModal) {
+    if (showSpecModal || showDaySpentModal) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
     }
-  }, [showSpecModal]);
+  }, [showSpecModal, showDaySpentModal]);
 
-  const handleLaunchPrototype = () => {
+  const handleLaunchSchedIQ = () => {
     window.open('https://sched-iq.vercel.app/', '_blank', 'noopener,noreferrer');
+  };
+
+  const handleLaunchDaySpentWell = () => {
+    window.open('https://day-spent-well.vercel.app/', '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -70,6 +76,7 @@ const Projects: React.FC = () => {
         </div>
 
         <div className="space-y-12">
+          {/* SchedIQ Project */}
           <div className="bg-white dark:bg-midnight rounded-[2.5rem] border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden group hover:border-blue-500/30 transition-all duration-500">
             <div className="bg-slate-50 dark:bg-slate-900/50 px-6 py-8 md:px-8 md:py-8 border-b border-slate-200 dark:border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-6">
               <div className="flex items-center gap-5 max-w-2xl">
@@ -129,7 +136,6 @@ const Projects: React.FC = () => {
                 </div>
               </div>
 
-              {/* Action Bar - Fixed Mobile Overhang */}
               <div className="mt-10 pt-8 border-t border-slate-100 dark:border-slate-800 flex flex-col lg:flex-row items-center justify-between gap-8">
                 <div className="flex items-center gap-4 w-full lg:w-auto">
                   <div className="p-3 bg-blue-600 rounded-2xl text-white shadow-xl shadow-blue-600/20 shrink-0">
@@ -150,8 +156,99 @@ const Projects: React.FC = () => {
                       <Code2 className="h-4 w-4" />
                     </button>
                     <button 
-                      onClick={handleLaunchPrototype}
+                      onClick={handleLaunchSchedIQ}
                       className="flex-1 lg:flex-none px-6 py-4 bg-blue-600 text-white rounded-2xl font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-3 transition-all hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] active:scale-95 shadow-lg whitespace-nowrap"
+                    >
+                      Launch Prototype
+                      <ExternalLink className="h-4 w-4" />
+                    </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Day Spent Well Project */}
+          <div className="bg-white dark:bg-midnight rounded-[2.5rem] border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden group hover:border-indigo-500/30 transition-all duration-500">
+            <div className="bg-slate-50 dark:bg-slate-900/50 px-6 py-8 md:px-8 md:py-8 border-b border-slate-200 dark:border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-6">
+              <div className="flex items-center gap-5 max-w-2xl">
+                <div className="h-14 w-14 rounded-2xl bg-indigo-600 flex items-center justify-center shrink-0 shadow-lg shadow-indigo-600/20 group-hover:scale-110 group-hover:-rotate-3 transition-all duration-500 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
+                  <Clock className="h-7 w-7 text-white relative z-10" />
+                </div>
+                <div>
+                  <h3 className="text-xl md:text-2xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
+                    Day Spent Well — A reflective time-awareness application
+                  </h3>
+                </div>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {["React", "TypeScript", "Tailwind", "Supabase", "Vercel"].map((tech) => (
+                  <span key={tech} className="px-3 py-1 bg-white dark:bg-slate-800 text-slate-600 dark:text-indigo-300 text-[10px] font-black uppercase tracking-widest rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="p-6 md:p-10">
+              <div className="grid lg:grid-cols-12 gap-10">
+                <div className="lg:col-span-8 space-y-8">
+                  <div>
+                    <h4 className="text-xs font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2 uppercase tracking-widest">
+                      <Eye className="h-4 w-4 text-indigo-500" />
+                      Strategic Objective
+                    </h4>
+                    <p className="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl font-medium">
+                      I built Day Spent Well to answer a simple but uncomfortable question: where does my day actually go? The goal wasn’t productivity or optimization—but honest awareness by comparing planned time with reality, without guilt or pressure.
+                    </p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-6">
+                      {["Planned vs Actual Time Awareness", "Second-Level Time Tracking", "Insight-Driven Reports", "Calendar-Based History"].map(item => (
+                        <div key={item} className="flex gap-3 items-center bg-slate-50 dark:bg-slate-900/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-800 transition-colors">
+                          <Zap className="h-4 w-4 text-indigo-500 shrink-0" />
+                          <span className="text-[10px] font-black text-slate-700 dark:text-slate-300 uppercase tracking-widest">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="lg:col-span-4">
+                  <div className="bg-slate-950 p-6 md:p-8 rounded-[2rem] border border-white/5 shadow-2xl relative overflow-hidden ring-1 ring-white/10">
+                    <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-6">Operational Value</h4>
+                    <ul className="space-y-4 text-xs text-slate-300">
+                      {["Helps users see how their days are actually lived", "Encourages reflection instead of guilt", "Makes lifestyle balance visible over time", "Removes pressure-driven productivity patterns"].map(item => (
+                        <li key={item} className="flex gap-3 items-start">
+                           <div className="h-1.5 w-1.5 bg-indigo-500 rounded-full mt-1.5 shrink-0 shadow-[0_0_8px_rgba(99,102,241,0.8)]"></div>
+                           <span className="font-bold leading-snug">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-10 pt-8 border-t border-slate-100 dark:border-slate-800 flex flex-col lg:flex-row items-center justify-between gap-8">
+                <div className="flex items-center gap-4 w-full lg:w-auto">
+                  <div className="p-3 bg-indigo-600 rounded-2xl text-white shadow-xl shadow-indigo-600/20 shrink-0">
+                    <Database className="h-5 w-5" />
+                  </div>
+                  <div className="max-w-md">
+                    <h5 className="font-black text-base text-slate-900 dark:text-white tracking-tight">Awareness before optimization.</h5>
+                    <p className="text-xs text-slate-400 font-medium mt-1">Designed to be opened even on a “bad” day.</p>
+                  </div>
+                </div>
+                
+                <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
+                    <button 
+                      onClick={() => setShowDaySpentModal(true)}
+                      className="flex-1 lg:flex-none px-6 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-950 rounded-2xl font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-3 transition-all hover:scale-[1.02] active:scale-95 shadow-lg whitespace-nowrap"
+                    >
+                      Technical Spec
+                      <FileText className="h-4 w-4" />
+                    </button>
+                    <button 
+                      onClick={handleLaunchDaySpentWell}
+                      className="flex-1 lg:flex-none px-6 py-4 bg-indigo-600 text-white rounded-2xl font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-3 transition-all hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(79,70,229,0.4)] active:scale-95 shadow-lg whitespace-nowrap"
                     >
                       Launch Prototype
                       <ExternalLink className="h-4 w-4" />
@@ -163,7 +260,235 @@ const Projects: React.FC = () => {
         </div>
       </div>
 
-      {/* Technical Spec Modal */}
+      {/* Day Spent Well Technical Spec Modal */}
+      {showDaySpentModal && (
+        <div className="fixed inset-0 z-[110] flex items-center justify-center p-0 md:p-4 lg:p-8">
+          <div className="absolute inset-0 bg-slate-950/98 backdrop-blur-xl" onClick={() => setShowDaySpentModal(false)}></div>
+          <div className="bg-white dark:bg-[#0a0f1c] w-full max-w-[1400px] h-full md:h-auto md:max-h-[92vh] md:rounded-[2.5rem] shadow-2xl relative z-10 overflow-hidden flex flex-col border border-slate-200 dark:border-white/10 animate-fade-in-up">
+            <div className="px-6 md:px-8 py-6 border-b border-slate-100 dark:border-white/5 flex items-center justify-between sticky top-0 bg-white/90 dark:bg-[#0a0f1c]/90 backdrop-blur-md z-20">
+              <div className="flex items-center gap-5">
+                <div className="h-12 w-12 rounded-xl bg-indigo-600 flex items-center justify-center shadow-lg shadow-indigo-600/20 shrink-0">
+                  <Clock className="h-6 w-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-lg md:text-xl font-black text-slate-900 dark:text-white tracking-tight uppercase">Day Spent Well Documentation</h3>
+                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Internal Build // Engineering Documentation</p>
+                </div>
+              </div>
+              <button onClick={() => setShowDaySpentModal(false)} className="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-xl transition-colors">
+                <X className="h-6 w-6 text-slate-400" />
+              </button>
+            </div>
+
+            <div className="flex-grow overflow-y-auto p-6 md:p-14 lg:p-16 custom-scrollbar space-y-20">
+              <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
+                <div className="lg:col-span-7 space-y-8">
+                  <div className="space-y-4">
+                    <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-slate-900 dark:text-white tracking-tight leading-[0.9]">Day Spent Well</h1>
+                    <p className="text-lg lg:text-xl font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-widest">A Reflective Time-Tracking & Insight Application</p>
+                  </div>
+                  <div className="space-y-6">
+                    <h2 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight flex items-center gap-3">
+                      <Search className="h-6 w-6 text-indigo-600" />
+                      Why I Built Day Spent Well
+                    </h2>
+                    <div className="space-y-4 text-slate-500 dark:text-slate-400 leading-relaxed font-medium text-lg">
+                      <p>Day Spent Well started from a personal realization.</p>
+                      <p>I could plan my days carefully—work, health, learning, rest—but at the end of the week, I still couldn’t answer a basic question honestly: how did I actually spend my time? Most tools either pushed me to optimize harder or reduced everything to streaks and scores.</p>
+                      <p>What I wanted instead was clarity—without guilt.</p>
+                      <p>Day Spent Well is my attempt to build a tool that helps people see their time clearly before trying to change it.</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="lg:col-span-5">
+                  <div className="bg-slate-50 dark:bg-midnight p-8 md:p-10 rounded-[2.5rem] border border-slate-100 dark:border-white/5 shadow-inner">
+                    <h5 className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest mb-8 flex items-center gap-2">
+                      <Monitor className="h-4 w-4 text-indigo-600" />
+                      The Reality It’s Designed For
+                    </h5>
+                    <ul className="space-y-6">
+                      {[
+                        { icon: <Workflow className="h-5 w-5" />, text: "Days rarely go as planned" },
+                        { icon: <Zap className="h-5 w-5" />, text: "Energy fluctuates" },
+                        { icon: <Target className="h-5 w-5" />, text: "Priorities shift" },
+                        { icon: <AlertTriangle className="h-5 w-5" />, text: "Some days are simply messy" }
+                      ].map((item, idx) => (
+                        <li key={idx} className="flex gap-5 items-start">
+                          <div className="h-10 w-10 bg-white dark:bg-slate-900 rounded-xl flex items-center justify-center shrink-0 border border-slate-100 dark:border-white/10 shadow-sm">
+                            <span className="text-indigo-600 dark:text-indigo-400">{item.icon}</span>
+                          </div>
+                          <span className="text-sm text-slate-600 dark:text-slate-300 font-bold leading-snug pt-2">{item.text}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="mt-10 pt-8 border-t border-slate-200 dark:border-white/5 text-center">
+                       <p className="text-xs text-slate-400 italic font-medium px-4">Most productivity tools treat this as failure. Day Spent Well treats it as reality.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-slate-900 p-8 md:p-12 lg:p-20 rounded-[2.5rem] md:rounded-[3.5rem] text-white relative overflow-hidden ring-1 ring-white/10">
+                <div className="relative z-10 max-w-5xl">
+                   <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-8 tracking-tight">What Day Spent Well Is <span className="text-slate-500">(and Is Not)</span></h2>
+                   <p className="text-lg lg:text-2xl text-slate-300 font-medium mb-12 max-w-3xl leading-relaxed">
+                     Day Spent Well is <span className="text-white font-bold">not a productivity or habit-tracking app</span>. It doesn’t push streaks, score behavior, or judge good or bad days.
+                   </p>
+                   <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+                     {[
+                       { q: "What they planned to do", a: "Activity Mapping" },
+                       { q: "What they actually did", a: "Time Capture" },
+                       { q: "How patterns emerge over time", a: "Insight Engine" }
+                     ].map((item, idx) => (
+                       <div key={idx} className="bg-white/5 p-6 md:p-8 rounded-3xl border border-white/10 backdrop-blur-sm group hover:bg-white/10 transition-all">
+                          <p className="text-base md:text-lg font-bold mb-6 leading-tight">{item.q}</p>
+                          <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-indigo-400">
+                             <Zap className="h-3 w-3" />
+                             {item.a}
+                          </div>
+                       </div>
+                     ))}
+                   </div>
+                </div>
+              </div>
+
+              <div className="space-y-16">
+                 <div className="flex items-center gap-6">
+                    <h2 className="text-3xl md:text-4xl font-black text-slate-900 dark:text-white tracking-tight whitespace-nowrap">How It Works</h2>
+                    <div className="h-px flex-grow bg-slate-100 dark:bg-white/5"></div>
+                 </div>
+                 <div className="grid md:grid-cols-2 gap-8 md:gap-10">
+                    {[
+                      { 
+                        title: "1. Daily Time Tracking", 
+                        icon: <Clock className="h-6 w-6" />,
+                        content: "Users plan activities across common life categories. Activities are tracked using a start/stop timer with pause, resume, and seamless switching, offering second-level accuracy." 
+                      },
+                      { 
+                        title: "2. Planned vs Actual Awareness", 
+                        icon: <Activity className="h-6 w-6" />,
+                        content: "Each activity has a planned duration. The dashboard shows actual time spent, progress against plan, and remaining or unaccounted time—designed to inform, not pressure." 
+                      },
+                      { 
+                        title: "3. Calendar-Based History", 
+                        icon: <Calendar className="h-6 w-6" />,
+                        content: "Past days are accessible via a calendar view. Historical days are read-only to preserve data integrity, and empty days clearly indicate no tracking." 
+                      },
+                      { 
+                        title: "4. Insightful Reports", 
+                        icon: <FileText className="h-6 w-6" />,
+                        content: "Reports focus on reflection rather than gamification. They include planned vs actual averages, over- and under-spent categories, and consistency levels." 
+                      }
+                    ].map((step, idx) => (
+                      <div key={idx} className="bg-slate-50 dark:bg-white/5 p-8 md:p-10 rounded-[2rem] border border-slate-100 dark:border-white/5 flex flex-col sm:flex-row gap-8 group">
+                         <div className="h-14 w-14 rounded-2xl bg-white dark:bg-slate-900 flex items-center justify-center shrink-0 shadow-sm border border-slate-100 dark:border-white/10 group-hover:scale-110 transition-transform">
+                            <span className="text-indigo-600 dark:text-indigo-400">{step.icon}</span>
+                         </div>
+                         <div className="space-y-4">
+                            <h3 className="text-xl font-black text-slate-900 dark:text-white tracking-tight">{step.title}</h3>
+                            <p className="text-sm md:text-base text-slate-500 dark:text-slate-400 leading-relaxed font-medium">{step.content}</p>
+                         </div>
+                      </div>
+                    ))}
+                 </div>
+              </div>
+
+              <div className="grid lg:grid-cols-12 gap-16">
+                 <div className="lg:col-span-5 space-y-12">
+                    <h2 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">Design Philosophy</h2>
+                    <div className="space-y-6">
+                       {[
+                         { label: "Calm and Dark UI", desc: "Inspired by Apple Fitness, colors only indicate state." },
+                         { label: "Reflection over Guilt", desc: "No streaks or aggressive notifications." },
+                         { label: "Data Integrity", desc: "Historical days are read-only to preserve honesty." },
+                         { label: "Safe Haven", desc: "Designed to feel safe to open even on difficult days." }
+                       ].map((principle, idx) => (
+                         <div key={idx} className="flex gap-6 items-start">
+                            <div className="h-1.5 w-1.5 bg-indigo-500 rounded-full mt-2.5 shrink-0 shadow-[0_0_8px_rgba(99,102,241,1)]"></div>
+                            <div>
+                               <p className="font-black text-slate-900 dark:text-white uppercase tracking-widest text-[10px] mb-1">{principle.label}</p>
+                               <p className="text-sm text-slate-500 dark:text-slate-400 font-medium">{principle.desc}</p>
+                            </div>
+                         </div>
+                       ))}
+                    </div>
+                 </div>
+                 <div className="lg:col-span-7 bg-indigo-50/30 dark:bg-indigo-900/10 p-8 md:p-12 rounded-[2.5rem] md:rounded-[3rem] border border-indigo-100/30 dark:border-indigo-900/20 relative overflow-hidden">
+                    <div className="relative z-10 space-y-8">
+                       <h2 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">My Role</h2>
+                       <p className="text-lg text-slate-600 dark:text-slate-400 font-medium leading-relaxed">
+                         I designed and built Day Spent Well end-to-end, including product concept, information architecture, time-tracking logic, insight modeling, UI design, and technical implementation.
+                       </p>
+                    </div>
+                 </div>
+              </div>
+
+              <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                 <div className="space-y-6">
+                    <div className="inline-flex items-center gap-3 px-4 py-2 bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400 rounded-xl border border-amber-100 dark:border-amber-800">
+                       <BrainCircuit className="h-5 w-5" />
+                       <span className="text-[10px] font-black uppercase tracking-widest">Build Methodology</span>
+                    </div>
+                    <h2 className="text-3xl md:text-4xl font-black text-slate-900 dark:text-white tracking-tight">Force Multiplication via AI</h2>
+                    <div className="space-y-4 text-slate-500 dark:text-slate-400 leading-relaxed font-medium text-lg">
+                      <p>I used AI as an acceleration and exploration tool—to translate intent into components, iterate on aggregation logic, and move faster without compromising clarity. The philosophy and constraints remained human-led.</p>
+                    </div>
+                 </div>
+              </div>
+
+              <div className="grid lg:grid-cols-3 gap-8 md:gap-10">
+                 <div className="bg-slate-50 dark:bg-midnight p-8 md:p-10 rounded-3xl border border-slate-100 dark:border-white/5 space-y-8">
+                    <h5 className="text-xs font-black text-slate-900 dark:text-white uppercase tracking-widest flex items-center gap-3">
+                       <Settings className="h-4 w-4 text-indigo-600" />
+                       Tech Stack
+                    </h5>
+                    <div className="space-y-6">
+                       <div className="flex flex-wrap gap-2">
+                          {["React", "TypeScript", "Tailwind CSS", "Supabase", "Vercel"].map(tag => (
+                            <span key={tag} className="px-3 py-1 bg-white dark:bg-slate-800 rounded-lg text-[9px] font-black uppercase tracking-widest text-slate-400 border border-slate-100 dark:border-white/5">{tag}</span>
+                          ))}
+                       </div>
+                    </div>
+                 </div>
+                 <div className="bg-slate-50 dark:bg-midnight p-8 md:p-10 rounded-3xl border border-slate-100 dark:border-white/5 space-y-8">
+                    <h5 className="text-xs font-black text-slate-900 dark:text-white uppercase tracking-widest flex items-center gap-3">
+                       <History className="h-4 w-4 text-indigo-600" />
+                       What It Taught Me
+                    </h5>
+                    <p className="text-sm text-slate-600 dark:text-slate-400 font-bold italic leading-relaxed">
+                      "People don’t need more productivity pressure. They need clarity, context, and compassion for how time is actually spent."
+                    </p>
+                 </div>
+                 <div className="bg-slate-50 dark:bg-midnight p-8 md:p-10 rounded-3xl border border-slate-100 dark:border-white/5 space-y-8">
+                    <h5 className="text-xs font-black text-slate-900 dark:text-white uppercase tracking-widest flex items-center gap-3">
+                       <Zap className="h-4 w-4 text-amber-500" />
+                       What's Next
+                    </h5>
+                    <ul className="space-y-3">
+                       {["Weekly/Monthly summaries", "Gentle narrative insights", "Long-term balance trends", "End-of-day reflections"].map(item => (
+                         <li key={item} className="flex gap-3 items-center text-[10px] font-black text-slate-500 uppercase tracking-widest">
+                            <div className="h-1 w-1 bg-indigo-500 rounded-full"></div>
+                            {item}
+                         </li>
+                       ))}
+                    </ul>
+                 </div>
+              </div>
+            </div>
+
+            <div className="px-6 md:px-8 py-6 border-t border-slate-100 dark:border-white/5 bg-slate-50 dark:bg-[#0a0f1c] flex flex-col md:flex-row items-center justify-between gap-6 sticky bottom-0 z-20">
+              <button 
+                onClick={() => setShowDaySpentModal(false)}
+                className="w-full md:w-auto px-12 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-2xl transition-all hover:scale-105 active:scale-95"
+              >
+                Close Documentation
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* SchedIQ Technical Spec Modal */}
       {showSpecModal && (
         <div className="fixed inset-0 z-[110] flex items-center justify-center p-0 md:p-4 lg:p-8">
           <div className="absolute inset-0 bg-slate-950/98 backdrop-blur-xl" onClick={() => setShowSpecModal(false)}></div>
@@ -211,7 +536,7 @@ const Projects: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="lg:col-span-5">
+                <div className="lg:col-span-4">
                   <div className="bg-slate-50 dark:bg-midnight p-8 md:p-10 rounded-[2.5rem] border border-slate-100 dark:border-white/5 shadow-inner">
                     <h5 className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest mb-8 flex items-center gap-2">
                       <Monitor className="h-4 w-4 text-blue-600" />
