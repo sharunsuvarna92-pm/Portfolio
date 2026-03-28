@@ -41,21 +41,21 @@ export const EXPERIENCE: ExperienceItem[] = [
     role: "Project Lead - Product Delivery & Solutions",
     period: "Jan 2022 - Present",
     description: "Directing end-to-end delivery of enterprise SaaS solutions for Fortune 500 clients. Ownership of the full product lifecycle from requirements definition to global rollout, converting pilot initiatives into multimillion-dollar contracts. Coordinating 10+ cross-functional squads (Product, Engineering, QA) to deliver complex IoT and AI integrations.",
-    logoUrl: "https://media.licdn.com/dms/image/v2/D560BAQHbMpcrYkp9Qw/company-logo_200_200/company-logo_200_200/0/1727849075962/sclera_platform_logo?e=1774483200&v=beta&t=Clbjt8WkSMwwS_AqOMo4pOg_3OqmDGGJnUkM-lQkt9k" 
+    logoUrl: "https://media.licdn.com/dms/image/v2/D560BAQHbMpcrYkp9Qw/company-logo_200_200/company-logo_200_200/0/1727849075962/sclera_platform_logo?e=1776297600&v=beta&t=u1Pi5Tfo521wDF_uCMUphebBcOQt_tqEKy5V3vJVCwQ" 
   },
   {
     company: "Bharat Electronics Limited",
     role: "Trainee Engineer - Project Management",
     period: "Mar 2021 - Dec 2021",
     description: "Coordinated cross-functional teams for mission-critical defense communication projects. Streamlined procurement workflows for 800+ orders and ensured timely delivery of 4 major projects aligned with strict government quality standards.",
-    logoUrl: "https://media.licdn.com/dms/image/v2/D560BAQEoT1DsKihRxQ/company-logo_200_200/company-logo_200_200/0/1725596070207/bharat_electronics_limited_logo?e=1774483200&v=beta&t=hww-ttjamSlbG8yw22JxIImeJLe4VhOCmw_TF2KdGZk"
+    logoUrl: "https://media.licdn.com/dms/image/v2/D560BAQEoT1DsKihRxQ/company-logo_200_200/company-logo_200_200/0/1725596070207/bharat_electronics_limited_logo?e=1776297600&v=beta&t=A19HWsKyCJTsuxl6MM3QFn46XqNPo9ZiR_ABJnjWSBQ"
   },
   {
     company: "Ventare Engineering",
     role: "Associate - Project Delivery (Mechanical Systems)",
     period: "July 2018 - April 2019",
     description: "Supported the $3M+ EPIC delivery of complex infrastructure projects. Oversaw system installations and ensured compliance with international standards, coordinating across consultants and subcontractors to drive project milestones.",
-    logoUrl: "https://media.licdn.com/dms/image/v2/C560BAQGmDXKm6YdcLQ/company-logo_200_200/company-logo_200_200/0/1630605343288/ventare_engineering_wll_logo?e=1774483200&v=beta&t=Rx-r_jq5OZnu0GaA7rpmFclYfwjfY4VIRo9a3oN4qWA"
+    logoUrl: "https://media.licdn.com/dms/image/v2/C560BAQGmDXKm6YdcLQ/company-logo_200_200/company-logo_200_200/0/1630605343288/ventare_engineering_wll_logo?e=1776297600&v=beta&t=-YYR07pZ1wurC8eAVuzEFuXuNwx7_0q8JsNUz3L4n7U"
   }
 ];
 
@@ -295,28 +295,28 @@ export const CERTIFICATIONS = [
     issuer: "Scrum.org",
     year: "Certified",
     description: "Validated knowledge of Agile-based project management, iterative product development, and cross-team collaboration.",
-    logoUrl: "https://media.licdn.com/dms/image/v2/C560BAQFzF6WZjNSHkQ/company-logo_200_200/company-logo_200_200/0/1631433558836?e=1774483200&v=beta&t=b_ec6nDupQAlVuSSFHxnADJtGPySAMEX-s5cnoEffes"
+    logoUrl: "https://media.licdn.com/dms/image/v2/C560BAQFzF6WZjNSHkQ/company-logo_200_200/company-logo_200_200/0/1631433558836?e=1776297600&v=beta&t=rwikzoFa80mMknfEli3snuZN1QsI0Loubj2o5RziMvU"
   },
   {
     name: "AWS Certified Cloud Practitioner",
     issuer: "Amazon Web Services",
     year: "Certified",
     description: "Foundational understanding of AWS cloud services, security, and architecture.",
-    logoUrl: "https://media.licdn.com/dms/image/v2/D4E0BAQFqdm1TZ-RZKQ/company-logo_200_200/B4EZgOay6gHEAQ-/0/1752588562343/amazon_web_services_logo?e=1774483200&v=beta&t=CTEidXyt_s1GBvdUEvurxM0srwGxANpblIGfJqNR1-0"
+    logoUrl: "https://media.licdn.com/dms/image/v2/D4E0BAQFqdm1TZ-RZKQ/company-logo_200_200/B4EZgOay6gHEAQ-/0/1752588562343/amazon_web_services_logo?e=1776297600&v=beta&t=AHz1Z9hAhMQ6FDp8hMh3TmiZC52aadUbPA-rSeq7WQk"
   },
   {
     name: "Prompt Engineering & Programming",
     issuer: "Columbia+",
     year: "Certified",
     description: "Prompt design, OpenAI API integration, and applying LLMs for automation and data analysis.",
-    logoUrl: "https://media.licdn.com/dms/image/v2/D4E0BAQE4nqCgfgkynw/company-logo_200_200/company-logo_200_200/0/1713832705156/columbiaplus_logo?e=1774483200&v=beta&t=avwJ35oXul5PdS0Mc-W5c2dLd_Dl8F59VEPcIeKBvos"
+    logoUrl: "https://media.licdn.com/dms/image/v2/D4E0BAQE4nqCgfgkynw/company-logo_200_200/company-logo_200_200/0/1713832705156/columbiaplus_logo?e=1776297600&v=beta&t=-oR3QyuyFLk5IvCeCDmwi0XJczI4c0fqxFKBFFMkld4"
   },
   {
     name: "Agile Project Management",
     issuer: "Atlassian",
     year: "Certified",
     description: "Agile fundamentals, Kanban/Scrum frameworks, and Jira Software configuration.",
-    logoUrl: "https://media.licdn.com/dms/image/v2/D4E0BAQGeyLL6crkJKg/company-logo_200_200/company-logo_200_200/0/1735593604612/atlassian_logo?e=1774483200&v=beta&t=um5yVbvZnxw15KGbA21ogf9GcNmVnrMOpafPMihFf2s"
+    logoUrl: "https://media.licdn.com/dms/image/v2/D4E0BAQGeyLL6crkJKg/company-logo_200_200/company-logo_200_200/0/1735593604612/atlassian_logo?e=1776297600&v=beta&t=SCERzhk-_tiN4btO35dL1oNpf1qdMB6g3cve3F_UhDo"
   }
 ];
 
