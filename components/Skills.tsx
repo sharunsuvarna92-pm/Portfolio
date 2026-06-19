@@ -38,9 +38,9 @@ const Skills: React.FC = () => {
             <div className="h-px flex-grow bg-slate-200 dark:bg-slate-800 ml-6 hidden md:block opacity-30"></div>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          <div className="flex flex-wrap justify-center gap-6">
             {CERTIFICATIONS.map((cert, index) => (
-              <div key={index} className="flip-card h-[280px] md:h-[320px] w-full group">
+              <div key={index} className="flip-card h-[280px] md:h-[320px] w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)] max-w-[340px] group">
                 <div className="flip-card-inner w-full h-full relative">
                   
                   {/* Front Side */}
